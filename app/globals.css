@@ -16,6 +16,10 @@
   --line: rgba(12, 18, 21, 0.1);
   --line-2: rgba(12, 18, 21, 0.16);
   --line-3: rgba(12, 18, 21, 0.3);
+  /* Interactive borders need 3:1 against their ground (WCAG 1.4.11).
+     The decorative hairlines above do not reach that, so controls
+     get their own. */
+  --line-control: rgba(12, 18, 21, 0.48);
 
   /* --- Foreground --- */
   --fg: #0c1215;
@@ -46,6 +50,9 @@
   --solid-bg: #0c1215;
   --solid-bg-hover: #1c272c;
   --solid-fg: #fafaf8;
+  /* The hairline that divides a solid button from its arrow well. */
+  --solid-divider: rgba(255, 255, 255, 0.18);
+  --solid-well: rgba(255, 255, 255, 0.045);
 
   /* --- Diagram paints. These flip with the panel. --- */
   --dg-box: #ffffff;
@@ -125,7 +132,7 @@
   --measure: 62ch;
 
   /* --- Radii, by function --- */
-  --r-control: 4px;
+  --r-control: 3px;
   --r-panel: 6px;
   --r-card: 6px;
   --r-media: 6px;
@@ -156,6 +163,7 @@
   --line: rgba(255, 255, 255, 0.09);
   --line-2: rgba(255, 255, 255, 0.17);
   --line-3: rgba(255, 255, 255, 0.28);
+  --line-control: rgba(255, 255, 255, 0.4);
 
   --fg: #edf2f3;
   --fg-2: #a5b3b8;
@@ -209,6 +217,8 @@
   --solid-bg: #f3f7f7;
   --solid-bg-hover: #ffffff;
   --solid-fg: #06110f;
+  --solid-divider: rgba(6, 17, 15, 0.16);
+  --solid-well: rgba(6, 17, 15, 0.035);
 
   --sheen: linear-gradient(180deg, rgba(255, 255, 255, 0.028), rgba(255, 255, 255, 0) 48%);
   --shadow-panel: 0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 24px 50px -38px rgba(0, 0, 0, 0.9);
@@ -323,7 +333,6 @@ strong {
 :focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
-  border-radius: var(--r-control);
 }
 
 .skip-link {

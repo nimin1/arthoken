@@ -136,7 +136,7 @@ export default function ContactForm() {
         <button type="submit" className={styles.submit} disabled={state === "sending"}>
           {state === "sending" ? "Sending" : "Send"}
           <svg viewBox="0 0 12 10" width="12" height="10" fill="none" aria-hidden="true">
-            <path d="M0 5h10.5M7 1.5 10.5 5 7 8.5" stroke="currentColor" strokeWidth="1.25" />
+            <path d="M0 5h10.5M7 1.5 10.5 5 7 8.5" stroke="currentColor" strokeWidth="1.6" />
           </svg>
         </button>
         <p className={styles.note}>

@@ -1,15 +1,18 @@
+/* =============================================================
+   Fully rounded. The label carries more weight than the rest of
+   the page so the control reads as the one thing to press.
+   ============================================================= */
 .base {
   position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 0.7rem;
-  padding-inline: 1.4rem;
-  padding-block: 0.95rem;
-  border: 1px solid transparent;
-  border-radius: var(--r-control);
+  gap: 0.6rem;
+  padding: 1rem 1.75rem;
+  border: 1.5px solid transparent;
+  border-radius: var(--r-pill);
   font-size: 0.9375rem;
-  font-weight: 500;
-  letter-spacing: -0.006em;
+  font-weight: 600;
+  letter-spacing: -0.008em;
   line-height: 1;
   isolation: isolate;
   transition:
@@ -21,31 +24,9 @@
   will-change: transform;
 }
 
-.labelWrap {
-  position: relative;
-  display: block;
-  overflow: hidden;
-  block-size: 1em;
-}
-
-.label {
-  display: block;
-  transition: transform var(--t-slow) var(--e-out);
-}
-
-.labelGhost {
-  position: absolute;
-  inset-block-start: 100%;
-  inset-inline-start: 0;
-  display: block;
-  transition: transform var(--t-slow) var(--e-out);
-}
-
-.base:hover .label,
-.base:focus-visible .label,
-.base:hover .labelGhost,
-.base:focus-visible .labelGhost {
-  transform: translateY(-100%);
+/* A pill needs its own focus shape, or the outline squares off. */
+.base:focus-visible {
+  border-radius: var(--r-pill);
 }
 
 .arrow {
@@ -57,40 +38,82 @@
 
 .base:hover .arrow,
 .base:focus-visible .arrow {
-  transform: translateX(3px);
+  transform: translateX(4px);
 }
 
-/* Solid: near-white on dark, with the brand showing only as light. */
+/* ---------- The label swap ---------- */
+/* The window is 1.25em rather than 1em so each copy's ascenders and
+   descenders sit inside their own line box. At 1em the hidden copy
+   bleeds over the top of the visible one. */
+.labelWrap {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  block-size: 1.25em;
+}
+
+.label,
+.labelGhost {
+  display: block;
+  line-height: 1.25;
+  transition: transform var(--t-slow) var(--e-out);
+}
+
+.labelGhost {
+  position: absolute;
+  inset-block-start: 100%;
+  inset-inline-start: 0;
+}
+
+.base:hover .label,
+.base:focus-visible .label,
+.base:hover .labelGhost,
+.base:focus-visible .labelGhost {
+  transform: translateY(-100%);
+}
+
+/* ---------- Solid ---------- */
+/* Near-black on paper, near-white inside a dark instrument. */
 .primary {
   background: var(--solid-bg);
   color: var(--solid-fg);
+  border-color: var(--solid-bg);
 }
 
 .primary:hover {
   background: var(--solid-bg-hover);
+  border-color: var(--solid-bg-hover);
 }
 
+/* ---------- Outlined ---------- */
+/* A full-strength ring, as in the reference, rather than a hairline.
+   The old secondary sat at 1.41:1 against the paper and read as a
+   disabled control. */
 .ghost {
-  background: var(--wash);
+  background: transparent;
   color: var(--fg);
-  border-color: var(--line-2);
+  border-color: var(--fg);
 }
 
 .ghost:hover {
-  background: var(--wash-strong);
-  border-color: var(--line-3);
+  background: var(--fg);
+  color: var(--bg);
 }
 
-/* Kept for API compatibility — the site is one surface now. */
+/* Kept for API compatibility. */
 .onInk {
   color: inherit;
 }
 
+/* ---------- Small, for the header ---------- */
 .small {
-  padding-inline: 1.05rem;
-  padding-block: 0.7rem;
+  padding: 0.7rem 1.3rem;
   font-size: 0.875rem;
-  gap: 0.55rem;
+  gap: 0.5rem;
+}
+
+.small .arrow {
+  inline-size: 0.6875rem;
 }
 
 @media (prefers-reduced-motion: reduce) {

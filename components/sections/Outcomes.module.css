@@ -1,0 +1,107 @@
+.blockLabel {
+  color: var(--fg-3);
+  padding-block-end: var(--s3);
+  border-block-end: 1px solid var(--line-2);
+  display: block;
+}
+
+/* ---------- The measures ---------- */
+.measures {
+  grid-column: 1 / span 7;
+}
+
+.grid {
+  margin-block-start: var(--s5);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--s4) var(--col-gap);
+}
+
+.measure {
+  display: grid;
+  align-content: start;
+  gap: 0.35rem;
+}
+
+.measureKey {
+  font-size: var(--t-body);
+  font-weight: 500;
+  letter-spacing: -0.014em;
+  color: var(--fg);
+}
+
+.measureVal {
+  color: var(--fg-2);
+  font-size: var(--t-small);
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+
+/* ---------- The record a case study will carry ---------- */
+.record {
+  grid-column: 9 / -1;
+}
+
+.recordList {
+  margin-block-start: var(--s5);
+  display: grid;
+}
+
+.recordRow {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: 0.9rem;
+  row-gap: 0.15rem;
+  padding-block: 0.7rem;
+  border-block-end: 1px solid var(--line);
+}
+
+.recordRow:first-child {
+  padding-block-start: 0;
+}
+
+.recordN {
+  color: var(--accent);
+  grid-row: 1 / span 2;
+  padding-block-start: 0.2rem;
+}
+
+.recordField {
+  font-size: var(--t-body);
+  font-weight: 500;
+  letter-spacing: -0.012em;
+  color: var(--fg);
+}
+
+.recordNote {
+  color: var(--fg-3);
+  font-size: var(--t-small);
+  line-height: 1.45;
+}
+
+.honest {
+  margin-block-start: var(--s5);
+  padding-inline-start: var(--s4);
+  border-inline-start: 2px solid var(--accent);
+  color: var(--fg-2);
+  font-size: var(--t-small);
+  line-height: 1.6;
+  text-wrap: pretty;
+}
+
+@media (max-width: 1000px) {
+  .measures,
+  .record {
+    grid-column: 1 / -1;
+  }
+
+  .record {
+    margin-block-start: clamp(2.5rem, 5vw, 4rem);
+  }
+}
+
+@media (max-width: 620px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

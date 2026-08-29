@@ -1,4 +1,4 @@
-import { aiControl } from "@/lib/content";
+import { craft } from "@/lib/content";
 import { wrap } from "@/lib/wrap";
 import styles from "./Diagram.module.css";
 
@@ -45,7 +45,7 @@ export default function PipelineDiagram() {
             decides
           </text>
 
-          {aiControl.columns.map((col, i) => {
+          {craft.columns.map((col, i) => {
             const x = X0 + i * (COL_W + GAP);
             const cx = x + COL_W / 2;
             return (
@@ -75,7 +75,7 @@ export default function PipelineDiagram() {
                   </text>
                 ))}
 
-                {i < aiControl.columns.length - 1 ? (
+                {i < craft.columns.length - 1 ? (
                   <path
                     className={styles.wireSoft}
                     d={`M${x + COL_W} ${HU_Y + BOX_H / 2}H${x + COL_W + GAP}`}

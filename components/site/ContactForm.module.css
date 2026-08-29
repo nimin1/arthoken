@@ -72,15 +72,29 @@ textarea.control {
 .submit {
   display: inline-flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.6rem;
+  padding: 1rem 1.75rem;
   background: var(--solid-bg);
   color: var(--solid-fg);
-  padding: 0.95rem 1.4rem;
-  border-radius: var(--r-control);
+  border: 1.5px solid var(--solid-bg);
+  border-radius: var(--r-pill);
   font-size: 0.9375rem;
   font-weight: 600;
-  transition: background-color var(--t-mid) var(--e-std);
+  letter-spacing: -0.008em;
+  line-height: 1;
+  transition:
+    background-color var(--t-mid) var(--e-std),
+    border-color var(--t-mid) var(--e-std);
 }
+
+.submit svg {
+  transition: transform var(--t-mid) var(--e-out);
+}
+
+.submit:hover svg {
+  transform: translateX(4px);
+}
+
 
 .submit:hover {
   background: var(--solid-bg-hover);

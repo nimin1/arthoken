@@ -1,36 +1,50 @@
+import SectionHead from "@/components/ui/SectionHead";
 import { why } from "@/lib/content";
 import styles from "./Why.module.css";
 
 /**
- * Deliberately the quietest section on the page. It arrives after the
- * pricing band, which is loud, and it is set small so the scroll has
- * somewhere to land before the closing panel.
+ * The operating-model contrast. Read left to right, each row is the same
+ * decision made two ways. Nobody is named, and the left column describes
+ * an arrangement rather than the people working inside one.
  */
 export default function Why() {
   return (
     <section className={`section ${styles.section}`} aria-labelledby="why-title">
       <div className="shell grid12">
-        <div className="head-quiet">
-          <h2 id="why-title" className={`label ${styles.kicker}`}>
-            {why.label}
-          </h2>
-          <p className={styles.aside}>{why.aside}</p>
+        <SectionHead
+          id="why-title"
+          label={why.label}
+          headline={why.headline}
+          lede={why.lede}
+        />
+
+        <div className={styles.table}>
+          <div className={styles.headRow} aria-hidden="true">
+            <span className={`label ${styles.usualHead}`}>{why.usualHead}</span>
+            <span className={`label label--accent ${styles.oursHead}`}>{why.oursHead}</span>
+          </div>
+
+          <dl className={styles.rows}>
+            {why.rows.map((row, i) => (
+              <div
+                key={row.ours}
+                className={styles.row}
+                data-reveal="fade"
+                style={{ ["--reveal-delay" as string]: `${Math.min(i, 4) * 60}ms` }}
+              >
+                <dt className={styles.usual}>{row.usual}</dt>
+                <dd className={styles.ours}>
+                  <span className={styles.oursTitle}>{row.ours}</span>
+                  <span className={styles.gloss}>{row.gloss}</span>
+                </dd>
+              </div>
+            ))}
+          </dl>
         </div>
 
-        <ul className={styles.list}>
-          {why.points.map((point, i) => (
-            <li
-              key={point.n}
-              className={styles.item}
-              data-reveal="fade"
-              style={{ ["--reveal-delay" as string]: `${i * 80}ms` }}
-            >
-              <span className={`label ${styles.n}`}>{point.n}</span>
-              <h3 className={styles.title}>{point.title}</h3>
-              <p className={styles.itemBody}>{point.body}</p>
-            </li>
-          ))}
-        </ul>
+        <p className={styles.compounding} data-reveal="fade">
+          {why.compounding}
+        </p>
       </div>
     </section>
   );

@@ -119,13 +119,15 @@
   gap: var(--s3) var(--s4);
 }
 
+/* Chips are labels, not controls. The pill says so, and it stops them
+   reading as a second row of buttons under the real ones. */
 .chip {
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
-  padding: 0.45rem 0.8rem;
+  padding: 0.5rem 1rem;
   border: 1px solid var(--line);
-  border-radius: var(--r-control);
+  border-radius: var(--r-pill);
   background: var(--wash);
   color: var(--fg-2);
   transition:

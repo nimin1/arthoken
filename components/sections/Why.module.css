@@ -1,61 +1,95 @@
 .section {
   background: var(--bg-raised);
   border-block: 1px solid var(--line);
-  padding-block: clamp(3.5rem, 6vw, 6rem);
 }
 
-.kicker {
-  flex: none;
-  color: var(--accent);
+.table {
+  grid-column: 1 / -1;
 }
 
-.aside {
+.headRow,
+.row {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 6fr);
+  gap: clamp(1.25rem, 3vw, 3rem);
+  align-items: baseline;
+}
+
+.headRow {
+  padding-block-end: var(--s3);
+  border-block-end: 1px solid var(--line-2);
+}
+
+.usualHead {
+  color: var(--fg-3);
+}
+
+.rows {
+  display: contents;
+}
+
+.row {
+  padding-block: clamp(0.8rem, 1.4vw, 1.15rem);
+  border-block-end: 1px solid var(--line);
+}
+
+/* The left column sits back. It is context, not the argument. */
+.usual {
+  color: var(--fg-3);
+  font-size: var(--t-small);
+  line-height: 1.4;
+  text-wrap: pretty;
+}
+
+.ours {
+  display: grid;
+  gap: 0.3rem;
+}
+
+.oursTitle {
+  color: var(--fg);
+  font-size: var(--t-h4);
+  font-weight: 500;
+  letter-spacing: -0.018em;
+  line-height: 1.2;
+  text-wrap: balance;
+}
+
+.gloss {
   color: var(--fg-2);
   font-size: var(--t-small);
-  line-height: 1.6;
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+
+.compounding {
+  grid-column: 1 / span 8;
+  margin-block-start: clamp(1.5rem, 2.6vw, 2.25rem);
+  color: var(--fg-2);
+  font-size: var(--t-body);
+  line-height: 1.62;
   max-inline-size: 72ch;
   text-wrap: pretty;
 }
 
-.list {
-  grid-column: 1 / -1;
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: clamp(1.5rem, 3vw, 2.5rem) var(--col-gap);
-}
-
-.item {
-  display: grid;
-  align-content: start;
-  gap: 0.5rem;
-}
-
-.n {
-  color: var(--fg-3);
-}
-
-.title {
-  font-size: var(--t-body);
-  font-weight: 500;
-  letter-spacing: -0.012em;
-  color: var(--fg);
-}
-
-.itemBody {
-  color: var(--fg-2);
-  font-size: var(--t-small);
-  line-height: 1.6;
-  text-wrap: pretty;
-}
-
-@media (max-width: 940px) {
-  .list {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 560px) {
-  .list {
+@media (max-width: 760px) {
+  .headRow,
+  .row {
     grid-template-columns: minmax(0, 1fr);
+    gap: 0.4rem;
+  }
+
+  /* On one column the contrast needs saying, since it is no longer shown. */
+  .usual::before {
+    content: "Usually: ";
+    color: var(--fg-3);
+  }
+
+  .headRow {
+    display: none;
+  }
+
+  .compounding {
+    grid-column: 1 / -1;
   }
 }

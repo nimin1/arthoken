@@ -42,6 +42,7 @@ export default function Offer() {
               {paragraph}
             </p>
           ))}
+          <p className={styles.caveat}>{offer.caveat}</p>
           <div className={styles.action}>
             <Button href={offer.cta.href}>
               {offer.cta.label}

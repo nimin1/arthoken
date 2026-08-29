@@ -4,11 +4,20 @@ import { work, type Engagement } from "@/lib/content";
 import styles from "./Work.module.css";
 
 export function EngagementModule({ item, index }: { item: Engagement; index: number }) {
+  /**
+   * The last three rows appear only once there is a real engagement
+   * behind them. Nothing here is filled in with an estimate.
+   */
   const rows = [
     { label: "The problem", text: item.problem },
-    { label: "What we did", text: item.engineered },
-    { label: "The result", text: item.outcome, accent: true },
-  ];
+    { label: "What we changed", text: item.engineered },
+    { label: "Time to first working version", text: item.timeToFirst },
+    { label: "In production", text: item.inProduction },
+    { label: "Measured result", text: item.measured },
+    { label: "The outcome", text: item.outcome, accent: true },
+  ].filter((row): row is { label: string; text: string; accent?: boolean } =>
+    Boolean(row.text)
+  );
 
   return (
     <article className={styles.module}>
@@ -47,7 +56,6 @@ export default function Work({ limit }: { limit?: number }) {
       <div className="shell grid12">
         <SectionHead
           id="work-title"
-          className={styles.head}
           label={work.label}
           headline={work.headline}
           lede={work.lede}

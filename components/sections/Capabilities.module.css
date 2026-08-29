@@ -9,7 +9,7 @@
   grid-template-columns: repeat(12, minmax(0, 1fr));
   column-gap: var(--col-gap);
   align-items: baseline;
-  padding-block: clamp(1.6rem, 2.6vw, 2.4rem);
+  padding-block: clamp(1.25rem, 2vw, 1.85rem);
   border-block-end: 1px solid var(--line);
 }
 
@@ -71,8 +71,8 @@
 }
 
 .closing {
-  grid-column: 1 / -1;
-  margin-block-start: clamp(1.75rem, 3vw, 2.5rem);
+  grid-column: 1 / span 7;
+  margin-block-start: clamp(1.25rem, 2.2vw, 1.9rem);
   font-size: var(--t-lede);
   line-height: 1.45;
   letter-spacing: -0.01em;

@@ -81,7 +81,7 @@ export default function Button({
       </span>
       {arrow ? (
         <svg className={styles.arrow} viewBox="0 0 12 10" fill="none" aria-hidden="true">
-          <path d="M0 5h10.5M7 1.5 10.5 5 7 8.5" stroke="currentColor" strokeWidth="1.25" />
+          <path d="M0 5h10.5M7 1.5 10.5 5 7 8.5" stroke="currentColor" strokeWidth="1.6" />
         </svg>
       ) : null}
     </Link>

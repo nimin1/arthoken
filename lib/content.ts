@@ -15,12 +15,14 @@
 
 export const site = {
   name: "Arthoken",
+  /** The logo lockup line. Set in the mark, so it stays as it is. */
   tagline: "Built with meaning.",
-  descriptor: "Product engineering and software consulting",
-  /** Short form, used in the browser tab and social cards. */
-  titleSuffix: "Product engineering & software consulting",
+  /** Under the wordmark in the footer. */
+  descriptor: "Software for problems worth solving",
+  /** Browser tab and social cards. */
+  titleSuffix: "Software for problems worth solving",
   description:
-    "Arthoken solves problems worth solving, through software people are glad to use.",
+    "Arthoken builds software for problems worth solving. Tell us the problem in the first meeting and you will be using something we built by the second.",
   /** The closing line in the footer rule. */
   footerNote: "Nothing invoiced until you’ve seen it work",
   email: "hello@arthoken.com",
@@ -36,7 +38,7 @@ export const nav = [
 ] as const;
 
 export const hero = {
-  label: "Product engineering & software consulting",
+  label: "Software for problems worth solving",
   headline: ["Meeting one,", "you talk.", "Meeting two,", "you’re clicking."],
   lede: "Most firms answer a problem with a proposal. We’d rather answer it with something that runs, built around your data and your terminology, with the awkward parts left in. Nothing is invoiced until you have seen it work and decided you want it for real.",
   primary: { label: "Bring us a problem", href: "/contact" },
@@ -55,12 +57,15 @@ export const hero = {
  * section eight to get said.
  */
 export const offer = {
-  label: "The offer",
-  statement: ["We’re new.", "That’s exactly why", "the first version", "is free."],
+  label: "Our founding offer",
+  statement: ["We would rather", "you judged us on", "working software."],
   body: [
-    "Arthoken hasn’t been around long enough to have a wall of client logos, and we aren’t going to borrow anybody else’s. Asking you to trust a case study you can’t verify felt like the wrong way to start.",
-    "So we do the other thing. We build you something, and let you judge it.",
+    "We are new. Arthoken hasn’t been around long enough to have a wall of client logos, and we aren’t going to borrow anybody else’s. Asking you to trust a case study you can’t verify felt like the wrong way to start.",
+    "So the first version is on us. You describe the problem, we build a working version of it, and you decide from something real rather than something written down.",
   ],
+  /** Stated plainly, because an opening offer is not a business model. */
+  caveat:
+    "This is how we are starting out while we earn the first few references. It is not how Arthoken intends to work forever.",
   facts: [
     { k: "Two meetings", v: "From your problem to something running." },
     { k: "No invoice", v: "Nothing to pay until you decide to go on." },
@@ -111,7 +116,7 @@ export const capabilities: {
   headline: "There is no service catalogue.",
   lede: "These are shapes of work rather than a menu to choose from. The common thread is that something worth doing was harder than it should have been.",
   closing:
-    "If what you need isn’t on this list, that isn’t a problem. It is usually where the interesting work is.",
+    "The work we want is the work that has already defeated an attempt or two. A system nobody will touch. An integration that never quite worked. A pilot that could not survive contact with real data. If what you need is not on this list, that is usually where the interesting work is.",
   items: [
     {
       n: "01",
@@ -201,6 +206,14 @@ export type Engagement = {
   problem: string;
   engineered: string;
   outcome: string;
+  /**
+   * The measured half of the record. Left undefined until there is a
+   * real engagement, a real number and a client happy to be named.
+   * The Work page renders these rows only when they are present.
+   */
+  timeToFirst?: string;
+  inProduction?: string;
+  measured?: string;
 };
 
 export const work: {
@@ -254,34 +267,52 @@ export const work: {
   ],
 };
 
+/**
+ * The operating-model contrast. No competitor is named, and the
+ * left-hand column is the shape of the arrangement rather than a
+ * criticism of anyone running it.
+ */
 export const why = {
-  label: "Four things that stay true",
-  headline: "Senior people, close to the problem.",
-  /** Shown under the index, in place of a headline. */
-  aside:
-    "The people who talk to you are the people who do the work. No account manager in between, no team you never meet. That stays true for as long as we can make it stay true.",
-  points: [
+  label: "How we are set up",
+  headline: "Fewer people, closer to the work.",
+  lede: "Most of what makes enterprise software slow is the arrangement around it rather than the engineering itself. This is the arrangement we chose instead.",
+  usualHead: "The usual shape",
+  oursHead: "How Arthoken works",
+  rows: [
     {
-      n: "01",
-      title: "Small teams, senior people",
-      body: "You work with the people solving your problem. Nobody is relaying messages between you and the work.",
+      usual: "A team sized to the contract",
+      ours: "Small teams, senior people",
+      gloss: "Four strong engineers who have seen the problem before, not fourteen who have not.",
     },
     {
-      n: "02",
-      title: "AI as a power tool",
-      body: "It makes the first version fast. It doesn’t get to decide anything that matters.",
+      usual: "Layers between you and the engineers",
+      ours: "The people who talk to you are the people who do the work",
+      gloss: "No account manager relaying messages, and no team you never meet.",
     },
     {
-      n: "03",
-      title: "Design is not a later phase",
-      body: "How the thing feels to use is decided while the architecture is being decided. Doing those separately is how software ends up correct and unpleasant.",
+      usual: "Requirements written down, then handed on",
+      ours: "You watch it being built",
+      gloss: "Fewer handoffs means less of the meaning falls out between them.",
     },
     {
-      n: "04",
-      title: "We finish things",
-      body: "Monitoring, runbooks, handover, and a team that can run it without us. Otherwise we haven’t done the job.",
+      usual: "AI in the pitch",
+      ours: "AI as a power tool",
+      gloss: "It changes how much a small senior team can finish. It does not decide anything.",
+    },
+    {
+      usual: "Billed by the day, so time is the product",
+      ours: "Fixed price per phase, so the working software is",
+      gloss: "If it takes us longer than we thought, that is ours to absorb.",
+    },
+    {
+      usual: "Handover at the end, if there is one",
+      ours: "We own it into production",
+      gloss: "Monitoring, runbooks and a team that can run it without us.",
     },
   ],
+  /** Deliberate, quiet, and true. Not a platform claim. */
+  compounding:
+    "Every engagement leaves us with something we keep. Architecture patterns that held up, testing approaches that caught real problems, tooling that removed a week of setup. The next problem starts further along than the last one did, which is the quiet argument for staying small.",
 } as const;
 
 export type Pain = {
@@ -356,30 +387,6 @@ export const pains: { label: string; headline: string; lede: string; items: Pain
   ],
 };
 
-export const imagine = {
-  label: "Before we build",
-  headline: "The brief is where we start, not where we finish.",
-  lede: "Most briefs describe the current process with better software around it. The more interesting question is what the thing could be if it were not carrying fifteen years of workarounds. We spend real time there before building anything, because the version you asked for and the version you actually wanted are rarely the same.",
-  promise: "When we come back, expect at least one thing you didn’t ask for and immediately want.",
-  moves: [
-    {
-      n: "01",
-      title: "We ask why the step exists",
-      body: "Half the steps in most processes are there because of a system that was replaced years ago. Those steps do not need better software. They need to go.",
-    },
-    {
-      n: "02",
-      title: "We design for the person doing the job",
-      body: "Not for the org chart, and not for the database. If the person using it has to understand how it was built, we have failed.",
-    },
-    {
-      n: "03",
-      title: "We look for the smaller idea",
-      body: "The best version of a piece of software is usually a good deal smaller than the one everybody described in the first meeting.",
-    },
-  ],
-} as const;
-
 export const engagement = {
   label: "How this works",
   headline: "Two meetings, then your call.",
@@ -413,7 +420,7 @@ export const engagement = {
       n: "05",
       when: "From here",
       title: "We make it real",
-      body: "Tests, evaluations, a security review, monitoring, runbooks, and your people trained to run it. This part takes the time. It’s also the part most AI projects never reach.",
+      body: "Tests, evaluations, a security review, monitoring, runbooks, and your people trained to run it. This part takes the time, and it is the part most AI projects never reach.",
     },
   ],
   boundary:
@@ -421,39 +428,37 @@ export const engagement = {
   cta: { label: "Bring us a problem", href: "/contact" },
 } as const;
 
-export const aiControl = {
-  label: "A power tool, not a strategy",
+/**
+ * One section, three beats: what we do before building, where the model
+ * helps, and what separates the thing you click in week one from the
+ * thing that runs your business.
+ */
+export const craft = {
+  label: "How the work gets done",
   headline: "The demo was never the hard part.",
-  lede: "Anyone can reach a convincing prototype in an afternoon now, and we use the models for exactly that, every day. It is also why so many AI projects stop there. Here is where the model helps, and where a person still has to decide.",
+  lede: "Anyone can reach a convincing prototype in an afternoon now. We use the models for exactly that, every day, and across the rest of the work as well. Research, architecture options, first-pass code, migrations, tests, documentation. What that buys is not a shortcut. It is a small senior team getting through the volume of work a much larger one used to need.",
+  accountability:
+    "The model drafts. A person decides. Architecture, correctness, security and business judgment stay with the engineer whose name is on the merge, and that does not change however good the models get. The same discipline runs backwards into the brief. Half the steps in most processes exist because of a system replaced years ago, and the version worth building is usually smaller than the one described in the first meeting.",
   columns: [
-    {
-      stage: "Explore",
-      ai: "Three approaches instead of one",
-      human: "Which one we actually take",
-    },
-    {
-      stage: "Build",
-      ai: "First-pass code, migrations, scaffolding",
-      human: "The architecture it has to live in",
-    },
-    {
-      stage: "Prove",
-      ai: "Drafts of tests and evaluations",
-      human: "What “correct” means for your business",
-    },
-    {
-      stage: "Guard",
-      ai: "Catches the obvious mistakes",
-      human: "Security, access and data boundaries",
-    },
-    {
-      stage: "Ship",
-      ai: "Release notes, docs, changelogs",
-      human: "The merge, and whose name is on it",
-    },
+    { stage: "Explore", ai: "Three approaches instead of one", human: "Which one we actually take" },
+    { stage: "Build", ai: "First-pass code, migrations, scaffolding", human: "The architecture it has to live in" },
+    { stage: "Prove", ai: "Drafts of tests and evaluations", human: "What “correct” means for your business" },
+    { stage: "Guard", ai: "Catches the obvious mistakes", human: "Security, access and data boundaries" },
+    { stage: "Ship", ai: "Release notes, docs, changelogs", human: "The merge, and whose name is on it" },
+  ],
+  /** Production over prototypes. */
+  productionLabel: "Then the part that takes the time",
+  demo: ["An interface", "Some logic", "A model behind it"],
+  production: [
+    "Tests and evaluations that run on every change",
+    "Tracing you can read when something looks wrong",
+    "Alerting that wakes a named person",
+    "Access control and data boundaries",
+    "A rollback that has been tried",
+    "Cost limits, runbooks, and your team trained to run it",
   ],
   closing:
-    "None of that is a position we hold for its own sake. It’s the difference between something that impresses a room and something that still behaves on a Tuesday in November, when the volume triples and nobody senior is online.",
+    "None of that is a position we hold for its own sake. It is the difference between something that impresses a room and something that still behaves on a Tuesday in November, when the volume triples and nobody senior is online.",
 } as const;
 
 export const pricing: {
@@ -505,11 +510,11 @@ export const pricing: {
     },
     {
       title: "Founding client rates",
-      body: "Our first few clients pay less than we will charge later. You are carrying the risk of hiring a firm with no track record, and the discount is what we think that risk is worth. In return we would like to describe the work once it is live, anonymised if you prefer. If your legal team says no, we will still do the work.",
+      body: "Our first few clients pay less than we will charge later, because they are carrying the risk of hiring a firm with no track record. In return we would like to describe the work once it is live, anonymised if you prefer. If your legal team says no, we will still do the work.",
     },
     {
       title: "You own all of it",
-      body: "Code, infrastructure, documentation and the prompts, yours from the first commit. No licence, no per-seat fee on your own system, and nothing stopping you taking it to somebody else.",
+      body: "Code, infrastructure, documentation and prompts, yours from the first commit. No licence, no per-seat fee on your own system, and nothing stopping you taking it to somebody else.",
     },
     {
       title: "Support is optional",
@@ -539,6 +544,39 @@ export const hardening = {
   ],
   closing:
     "That right-hand side is where the money and the months go. It is also the reason we can afford to give the left-hand side away.",
+} as const;
+
+/**
+ * Outcomes. There are no client results to publish yet and none are
+ * invented here. What this section publishes is the measures we agree
+ * before a build starts, and the shape a case study will take once
+ * there is one to write.
+ */
+export const outcomes = {
+  label: "Results",
+  headline: "We measure what changed.",
+  lede: "Working software is the deliverable. The reason for it is a number somewhere in your business moving. We agree which number before the build starts, and we write down where it stands on the day we begin.",
+  /** Categories, not claims. Nothing here is presented as achieved. */
+  measuresLabel: "What we usually end up measuring",
+  measures: [
+    { k: "Time through the process", v: "How long the work takes end to end, not how long the system takes to respond." },
+    { k: "Release frequency", v: "How often a change reaches production, and how long it waits before it does." },
+    { k: "Manual work removed", v: "Hours a week that stop being spent copying between systems." },
+    { k: "Cost to run", v: "What the system costs per month once it is doing the job." },
+    { k: "Time to onboard", v: "How long a new customer, supplier or member of staff takes to become useful." },
+    { k: "Production incidents", v: "How often it breaks, and how long it stays broken." },
+  ],
+  /** The record every future case study on this site will carry. */
+  recordLabel: "What a case study here will say",
+  record: [
+    { n: "01", field: "The problem", note: "In the words the client used, not ours." },
+    { n: "02", field: "What we changed", note: "The engineering decision that mattered." },
+    { n: "03", field: "Time to first working version", note: "Days from the first meeting." },
+    { n: "04", field: "In production", note: "When it started doing the job for real." },
+    { n: "05", field: "Measured result", note: "The number, before and after, with the client’s name on it." },
+  ],
+  honest:
+    "Arthoken is new, so there are no results here yet. We would rather leave the row empty than fill it with something you cannot check. The first client to let us publish theirs gets the founding rate.",
 } as const;
 
 export const honesty = {
