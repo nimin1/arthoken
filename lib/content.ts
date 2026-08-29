@@ -10,11 +10,11 @@
 export const site = {
   name: "Arthoken",
   tagline: "Built with meaning.",
-  descriptor: "AI-augmented software engineering and consulting",
+  descriptor: "Product engineering and software consulting",
   /** Short form, used in the browser tab and social cards. */
-  titleSuffix: "AI-augmented software engineering",
+  titleSuffix: "Product engineering & software consulting",
   description:
-    "Arthoken builds software for companies with hard problems. New products, modern platforms, and AI that survives contact with production.",
+    "Arthoken solves problems worth solving, through software people are glad to use.",
   email: "hello@arthoken.com",
   url: "https://arthoken.com",
 } as const;
@@ -28,7 +28,7 @@ export const nav = [
 ] as const;
 
 export const hero = {
-  label: "AI-augmented software engineering",
+  label: "Product engineering & software consulting",
   headline: ["Engineering", "what comes next."],
   lede: "Tell us the problem in the first meeting. By the second, you'll be clicking on something we built. Nothing gets invoiced until you've seen it work and decided you want it for real.",
   primary: { label: "Bring us a problem", href: "/contact" },
@@ -36,7 +36,7 @@ export const hero = {
   strip: [
     "A working version in days",
     "Nothing to pay until it lands",
-    "Senior engineers, small teams",
+    "Small teams who own the outcome",
     "Built to survive production",
   ],
 } as const;
@@ -76,11 +76,14 @@ export const capabilities: {
   label: string;
   headline: string;
   lede: string;
+  closing: string;
   items: Capability[];
 } = {
-  label: "What we do",
-  headline: "Five kinds of work.",
-  lede: "Most projects look like one of these.",
+  label: "What we build",
+  headline: "Some of what we build.",
+  lede: "Examples, not a menu. The common thread is that something worth doing was harder than it should have been.",
+  closing:
+    "If what you need isn't on this list, that isn't a problem. It is usually where the interesting work is.",
   items: [
     {
       n: "01",
@@ -88,11 +91,11 @@ export const capabilities: {
       lede: "New products, platforms and applications, from first idea to production.",
       engagedWhen: "Something has to exist that does not exist yet.",
       items: [
-        "Product engineering",
+        "Customer-facing products",
+        "Web and mobile applications",
         "Enterprise platforms",
-        "AI-native applications",
-        "Rapid product development",
         "Internal business systems",
+        "A first version of a new idea",
       ],
     },
     {
@@ -104,8 +107,8 @@ export const capabilities: {
         "Application modernization",
         "Fixing difficult architecture",
         "Cloud platforms",
-        "Data platforms",
-        "Connecting systems together",
+        "Data products and reporting",
+        "Connecting systems that never met",
       ],
     },
     {
@@ -239,6 +242,11 @@ export const why = {
     },
     {
       n: "03",
+      title: "Design is not a later phase",
+      body: "How the thing feels to use is decided while the architecture is being decided. Doing those separately is how software ends up correct and unpleasant.",
+    },
+    {
+      n: "04",
       title: "We finish things",
       body: "Monitoring, runbooks, handover, and a team that can run it without us. Otherwise we haven't done the job.",
     },
@@ -257,18 +265,29 @@ export type Pain = {
 export const pains: { label: string; headline: string; lede: string; items: Pain[] } = {
   label: "Start here",
   headline: "Which of these sounds like your year?",
-  lede: "Most of the work we take on arrives as one of these four sentences.",
+  lede: "People usually arrive with a sentence like one of these. If yours isn\u2019t here, it still belongs.",
   items: [
     {
-      id: "pilot",
-      quote: "Our AI pilot never made it to production.",
-      short: "AI that stalled",
+      id: "idea",
+      quote: "We think there's a better way to do this. Nobody has built it.",
+      short: "An idea nobody has built",
       really:
-        "The demo worked. Then it met real data, real volumes and a security review. Nobody could say why it produced a given answer, so nobody would sign it off.",
+        "You can describe the outcome, and roughly why it would be better than what exists. What is missing is somebody to think it through properly and then actually build it.",
       weDo:
-        "We keep the model doing the language work and move the decision into ordinary, testable code, with a record of why each outcome happened and a person accountable for it.",
+        "We work out whether the idea holds, design the experience around it, and build the first real version. Usually smaller and sharper than the one in your head.",
       youGet:
-        "A system your risk and audit people will approve, doing the part of the job that was worth automating.",
+        "Something real to put in front of people, and an honest answer about whether it is worth going further.",
+    },
+    {
+      id: "capacity",
+      quote: "This needs to exist and it isn't getting built.",
+      short: "Stuck on the roadmap",
+      really:
+        "It matters, everyone agrees it matters, and it has been on the roadmap for three quarters. Your own people are the right people, and they are already committed to something else.",
+      weDo:
+        "We take the whole thing, the product decisions as well as the code, and bring it back in short releases you can judge as they land.",
+      youGet:
+        "The thing built properly, and nobody left holding a system they don't understand.",
     },
     {
       id: "legacy",
@@ -293,18 +312,42 @@ export const pains: { label: string; headline: string; lede: string; items: Pain
         "A shorter distance between deciding something and it being live, with the same team.",
     },
     {
-      id: "capacity",
-      quote: "We need this built and we don't have the team.",
-      short: "No capacity to build it",
+      id: "pilot",
+      quote: "Our AI pilot never made it to production.",
+      short: "AI that stalled",
       really:
-        "The work matters, your own people are committed elsewhere, and hiring for it takes six months you do not have.",
+        "The demo worked. Then it met real data, real volumes and a security review. Nobody could say why it produced a given answer, so nobody would sign it off.",
       weDo:
-        "A small senior team builds it alongside you, in your codebase, in short releases you can see and judge as they land.",
+        "We keep the model doing the language work and move the decision into ordinary, testable code, with a record of why each outcome happened and a person accountable for it.",
       youGet:
-        "The thing built, and your people able to run it after we leave.",
+        "A system your risk and audit people will approve, doing the part of the job that was worth automating.",
     },
   ],
 };
+
+export const imagine = {
+  label: "Before we build",
+  headline: "The brief is where we start, not where we finish.",
+  lede: "Most briefs describe the current process with better software around it. The more interesting question is what the thing could be if it were not carrying fifteen years of workarounds. We spend real time there before building anything, because the version you asked for and the version you actually wanted are rarely the same.",
+  promise: "When we come back, expect at least one thing you didn\u2019t ask for and immediately want.",
+  moves: [
+    {
+      n: "01",
+      title: "We ask why the step exists",
+      body: "Half the steps in most processes are there because of a system that was replaced years ago. Those steps do not need better software. They need to go.",
+    },
+    {
+      n: "02",
+      title: "We design for the person doing the job",
+      body: "Not for the org chart, and not for the database. If the person using it has to understand how it was built, we have failed.",
+    },
+    {
+      n: "03",
+      title: "We look for the smaller idea",
+      body: "The best version of a piece of software is usually a good deal smaller than the one everybody described in the first meeting.",
+    },
+  ],
+} as const;
 
 export const engagement = {
   label: "How this works",
@@ -348,7 +391,7 @@ export const engagement = {
 } as const;
 
 export const aiControl = {
-  label: "Where AI sits",
+  label: "A power tool, not a strategy",
   headline: "Anyone can reach a demo now. Getting past one is the job.",
   lede: "The models got good enough that a convincing prototype takes an afternoon, and we use them for exactly that, every day. It's also why so many AI projects stop at the demo. The demo was never the hard part.",
   columns: [

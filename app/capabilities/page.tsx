@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import PageHeader from "@/components/site/PageHeader";
+import Hardening from "@/components/sections/Hardening";
 import Modernization from "@/components/sections/Modernization";
 import Architecture from "@/components/sections/Architecture";
 import AiEngineering from "@/components/sections/AiEngineering";
@@ -48,6 +49,8 @@ export default function CapabilitiesPage() {
           ))}
         </div>
       </section>
+
+      <Hardening />
 
       <Modernization />
 

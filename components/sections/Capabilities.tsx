@@ -30,6 +30,8 @@ export default function Capabilities() {
           ))}
         </ul>
 
+        <p className={styles.closing}>{capabilities.closing}</p>
+
         <p className={styles.more}>
           <TextLink href="/capabilities">
             <span className="label">See what each one involves</span>
