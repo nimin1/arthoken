@@ -1,10 +1,5 @@
-.head {
-  grid-column: 1 / span 7;
-}
-
 .aside {
-  grid-column: 9 / span 4;
-  align-self: end;
+  margin-block-start: var(--s5);
 }
 
 .range {
@@ -50,7 +45,7 @@
 
 .slice {
   position: relative;
-  padding-block-start: var(--s5);
+  padding-block-start: 3.5rem;
 }
 
 .slice::before {
@@ -58,8 +53,8 @@
   position: absolute;
   inset-block-start: 0;
   inset-inline: 0;
-  block-size: 4px;
-  border-radius: 2px;
+  block-size: 2.25rem;
+  border-radius: 3px;
   background: var(--accent);
 }
 
@@ -75,10 +70,15 @@
   background: color-mix(in srgb, var(--accent) 34%, transparent);
 }
 
+/* The free stretch is drawn, not omitted: an empty bar the same
+   height as the paid ones is the whole point of the picture. */
 .free::before {
-  background: none;
-  border-block-start: 2px dashed var(--line-3);
-  block-size: 0;
+  background: repeating-linear-gradient(
+    135deg,
+    var(--line) 0 5px,
+    transparent 5px 10px
+  );
+  border: 1px solid var(--line-2);
 }
 
 .amount {

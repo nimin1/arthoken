@@ -8,22 +8,22 @@ export default function Pricing() {
       <div className="shell grid12">
         <SectionHead
           id="pricing-title"
-          className={styles.head}
           label={pricing.label}
           headline={pricing.headline}
           lede={pricing.lede}
+          aside={
+            <div className={styles.aside} data-reveal="fade">
+              {pricing.range ? <p className={styles.range}>{pricing.range}</p> : null}
+              <ul className={styles.notes}>
+                {pricing.notes.map((note) => (
+                  <li key={note} className={styles.note}>
+                    {note}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          }
         />
-
-        <div className={styles.aside} data-reveal="fade">
-          {pricing.range ? <p className={styles.range}>{pricing.range}</p> : null}
-          <ul className={styles.notes}>
-            {pricing.notes.map((note) => (
-              <li key={note} className={styles.note}>
-                {note}
-              </li>
-            ))}
-          </ul>
-        </div>
 
         <ol className={styles.schedule}>
           {pricing.schedule.map((slice, i) => (

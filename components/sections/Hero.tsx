@@ -4,6 +4,11 @@ import PointerParallax from "@/components/motif/PointerParallax";
 import { hero } from "@/lib/content";
 import styles from "./Hero.module.css";
 
+/**
+ * The arrival. The headline is the promise rather than a category
+ * description, and the layer stack is an architectural slab that runs
+ * off the right edge of the viewport rather than a card on the page.
+ */
 export default function Hero() {
   return (
     <section className={styles.hero} aria-labelledby="hero-title">
@@ -13,7 +18,7 @@ export default function Hero() {
             <span className="label">{hero.label}</span>
           </p>
 
-          <h1 id="hero-title" className={`display-1 ${styles.headline}`}>
+          <h1 id="hero-title" className={`display-0 ${styles.headline}`}>
             {hero.headline.map((line, i) => (
               <span
                 key={line}
@@ -28,7 +33,7 @@ export default function Hero() {
           <p
             className={`lede ${styles.lede}`}
             data-reveal="fade"
-            style={{ ["--reveal-delay" as string]: "340ms" }}
+            style={{ ["--reveal-delay" as string]: "440ms" }}
           >
             {hero.lede}
           </p>
@@ -36,7 +41,7 @@ export default function Hero() {
           <div
             className={styles.actions}
             data-reveal="fade"
-            style={{ ["--reveal-delay" as string]: "420ms" }}
+            style={{ ["--reveal-delay" as string]: "520ms" }}
           >
             <Button href={hero.primary.href} magnetic>
               {hero.primary.label}
@@ -46,20 +51,24 @@ export default function Hero() {
             </Button>
           </div>
         </div>
+      </div>
 
-        <div className={styles.figure} data-panel="dark">
-          <div className={styles.figureLabel}>
-            <span className="label">System layers</span>
-            <span className="label">fig. 01</span>
-          </div>
-          <PointerParallax strength={18}>
-            <LayerStack />
-          </PointerParallax>
+      <div className={styles.slab} data-panel="dark" aria-hidden="true">
+        <div className={styles.slabTop}>
+          <span className="label label--mono">System layers</span>
+          <span className="label label--mono">fig. 01</span>
         </div>
+        <PointerParallax strength={22}>
+          <LayerStack />
+        </PointerParallax>
       </div>
 
       <div className="shell">
-        <div className={styles.strip} data-reveal="fade" style={{ ["--reveal-delay" as string]: "560ms" }}>
+        <div
+          className={styles.strip}
+          data-reveal="fade"
+          style={{ ["--reveal-delay" as string]: "620ms" }}
+        >
           {hero.strip.map((item) => (
             <span key={item} className={`label ${styles.chip}`}>
               {item}

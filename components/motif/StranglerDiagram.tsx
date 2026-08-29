@@ -21,7 +21,7 @@ export default function StranglerDiagram() {
           <span />
           <span />
         </span>
-        <span className="label">Migration pattern — no big-bang cutover</span>
+        <span className="label label--mono">Migration pattern without a big-bang cutover</span>
       </figcaption>
 
       <div className={styles.scroller}>

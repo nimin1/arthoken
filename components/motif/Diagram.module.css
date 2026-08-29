@@ -60,19 +60,19 @@
 
 /* ---- shared diagram parts ---- */
 .box {
-  fill: rgba(12, 21, 25, 0.92);
+  fill: var(--dg-box);
   stroke: var(--line-2);
   stroke-width: 1;
 }
 
 .boxAccent {
-  fill: rgba(45, 216, 224, 0.07);
-  stroke: rgba(45, 216, 224, 0.45);
+  fill: var(--dg-box-accent);
+  stroke: var(--dg-box-accent-line);
   stroke-width: 1;
 }
 
 .boxGhost {
-  fill: rgba(255, 255, 255, 0.02);
+  fill: var(--dg-box-ghost);
   stroke: var(--line);
   stroke-width: 1;
   stroke-dasharray: 4 4;
@@ -117,7 +117,7 @@
 
 .wireAccent {
   fill: none;
-  stroke: rgba(45, 216, 224, 0.5);
+  stroke: var(--dg-box-accent-line);
   stroke-width: 1.25;
 }
 
@@ -172,7 +172,7 @@
 
 /* ---- engagement + pipeline additions ---- */
 .zone {
-  fill: rgba(255, 255, 255, 0.016);
+  fill: var(--dg-zone);
   stroke: var(--line);
   stroke-width: 1;
   stroke-dasharray: 3 5;
@@ -279,4 +279,34 @@
   letter-spacing: 0.16em;
   fill: var(--fg-3);
   text-transform: uppercase;
+}
+
+/* -------------------------------------------------------------
+   Paper variant. Not every diagram should be a dark instrument:
+   this one is a drawing on the page, with rules instead of a
+   frame, so two diagrams in the same scroll never read as the
+   same object twice.
+   ------------------------------------------------------------- */
+.paper {
+  border: 0;
+  border-radius: 0;
+  border-block: 1px solid var(--line-2);
+  background: none;
+  box-shadow: none;
+}
+
+.paper .frameHead {
+  padding-inline: 0;
+  background: none;
+  border-block-end: 0;
+  padding-block-end: 0;
+}
+
+.paper .scroller {
+  padding-inline: 0;
+  padding-block-start: var(--s4);
+}
+
+.paper .hint {
+  padding-inline: 0;
 }

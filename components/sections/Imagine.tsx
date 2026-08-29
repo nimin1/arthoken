@@ -13,15 +13,16 @@ export default function Imagine() {
       <div className="shell grid12">
         <SectionHead
           id="imagine-title"
-          className={styles.head}
           label={imagine.label}
           headline={imagine.headline}
+          size="display-3"
           lede={imagine.lede}
+          aside={
+            <p className={styles.promise} data-reveal="fade">
+              {imagine.promise}
+            </p>
+          }
         />
-
-        <p className={styles.promise} data-reveal="fade">
-          {imagine.promise}
-        </p>
 
         <div className={styles.diagram} data-reveal="fade">
           <ReframeDiagram />

@@ -1,10 +1,16 @@
 /**
- * Arthoken — site content.
+ * Arthoken - site content.
  *
  * All prose lives here so copy can be edited without touching layout.
- * House rule: short sentences, plain words, no jargon a business reader
- * would have to decode. Nothing here is fabricated — no invented clients,
- * no logos we do not own, no metrics.
+ *
+ * House rules, so the writing keeps sounding like a person:
+ *   short sentences, plain words, no jargon a business reader would
+ *   have to decode. Nothing fabricated: no invented clients, no logos
+ *   we do not own, no metrics. No em dashes. No colons introducing a
+ *   list mid-sentence. No "not just X, but Y". No hedges such as
+ *   "genuinely", "simply" or "truly". No "solutions", "leverage",
+ *   "seamless" or "journey". Curly apostrophes throughout, never
+ *   straight ones.
  */
 
 export const site = {
@@ -15,6 +21,8 @@ export const site = {
   titleSuffix: "Product engineering & software consulting",
   description:
     "Arthoken solves problems worth solving, through software people are glad to use.",
+  /** The closing line in the footer rule. */
+  footerNote: "Nothing invoiced until you’ve seen it work",
   email: "hello@arthoken.com",
   url: "https://arthoken.com",
 } as const;
@@ -29,16 +37,36 @@ export const nav = [
 
 export const hero = {
   label: "Product engineering & software consulting",
-  headline: ["Engineering", "what comes next."],
-  lede: "Tell us the problem in the first meeting. By the second, you'll be clicking on something we built. Nothing gets invoiced until you've seen it work and decided you want it for real.",
+  headline: ["Meeting one,", "you talk.", "Meeting two,", "you’re clicking."],
+  lede: "Most firms answer a problem with a proposal. We’d rather answer it with something that runs, built around your data and your terminology, with the awkward parts left in. Nothing is invoiced until you have seen it work and decided you want it for real.",
   primary: { label: "Bring us a problem", href: "/contact" },
-  secondary: { label: "How this works", href: "/#how" },
+  secondary: { label: "See how that works", href: "/#how" },
   strip: [
     "A working version in days",
     "Nothing to pay until it lands",
     "Small teams who own the outcome",
     "Built to survive production",
   ],
+} as const;
+
+/**
+ * The offer, stated once, loudly, near the top. This is the single most
+ * differentiating thing Arthoken can say, so it does not wait until
+ * section eight to get said.
+ */
+export const offer = {
+  label: "The offer",
+  statement: ["We’re new.", "That’s exactly why", "the first version", "is free."],
+  body: [
+    "Arthoken hasn’t been around long enough to have a wall of client logos, and we aren’t going to borrow anybody else’s. Asking you to trust a case study you can’t verify felt like the wrong way to start.",
+    "So we do the other thing. We build you something, and let you judge it.",
+  ],
+  facts: [
+    { k: "Two meetings", v: "From your problem to something running." },
+    { k: "No invoice", v: "Nothing to pay until you decide to go on." },
+    { k: "You own it", v: "Code, infrastructure and prompts, from the first commit." },
+  ],
+  cta: { label: "Bring us a problem", href: "/contact" },
 } as const;
 
 /** The three-line positioning band that replaces the old essay. */
@@ -80,10 +108,10 @@ export const capabilities: {
   items: Capability[];
 } = {
   label: "What we build",
-  headline: "Some of what we build.",
-  lede: "Examples, not a menu. The common thread is that something worth doing was harder than it should have been.",
+  headline: "There is no service catalogue.",
+  lede: "These are shapes of work rather than a menu to choose from. The common thread is that something worth doing was harder than it should have been.",
   closing:
-    "If what you need isn't on this list, that isn't a problem. It is usually where the interesting work is.",
+    "If what you need isn’t on this list, that isn’t a problem. It is usually where the interesting work is.",
   items: [
     {
       n: "01",
@@ -128,7 +156,7 @@ export const capabilities: {
       n: "04",
       title: "Scale",
       lede: "Performance, reliability, security and cost, when the system has to hold up.",
-      engagedWhen: "The problem is genuinely difficult and the usual answers have failed.",
+      engagedWhen: "The problem is hard and the usual answers have failed.",
       items: [
         "Distributed systems",
         "Platform engineering",
@@ -159,7 +187,7 @@ export const approach = {
   lede: "We are not a supplier of developers. This is the engagement.",
   steps: [
     { n: "01", title: "Understand", body: "We learn your business, your systems and your constraints." },
-    { n: "02", title: "Frame", body: "We agree what the real problem is before proposing a solution." },
+    { n: "02", title: "Frame", body: "We agree what the real problem is before we propose anything." },
     { n: "03", title: "Design", body: "We choose the structure and explain the trade-offs in plain language." },
     { n: "04", title: "Build", body: "Senior engineers build it with your team, in small releases you can see." },
     { n: "05", title: "Hand over", body: "We measure the result and leave your team able to run it." },
@@ -183,7 +211,7 @@ export const work: {
   disclosure: string;
   items: Engagement[];
 } = {
-  label: "How we'd approach it",
+  label: "How we’d approach it",
   headline: "A problem, worked through.",
   lede: "One pattern we see often, and exactly what we would do about it.",
   ledeLong:
@@ -219,7 +247,7 @@ export const work: {
       problem:
         "A large engineering group rolled out AI coding tools and delivery did not move at all.",
       engineered:
-        "The bottleneck was never typing. It was slow reviews, painful environments and a test suite nobody trusted enough to release on. We pointed the tools at the work they are genuinely good at and rebuilt the process around them.",
+        "The bottleneck was never typing. It was slow reviews, painful environments and a test suite nobody trusted enough to release on. We pointed the tools at the work they are good at and rebuilt the process around them.",
       outcome:
         "The tools finally had something worth speeding up.",
     },
@@ -227,8 +255,11 @@ export const work: {
 };
 
 export const why = {
-  label: "Why Arthoken",
+  label: "Four things that stay true",
   headline: "Senior people, close to the problem.",
+  /** Shown under the index, in place of a headline. */
+  aside:
+    "The people who talk to you are the people who do the work. No account manager in between, no team you never meet. That stays true for as long as we can make it stay true.",
   points: [
     {
       n: "01",
@@ -238,7 +269,7 @@ export const why = {
     {
       n: "02",
       title: "AI as a power tool",
-      body: "It makes the first version fast. It doesn't get to decide anything that matters.",
+      body: "It makes the first version fast. It doesn’t get to decide anything that matters.",
     },
     {
       n: "03",
@@ -248,7 +279,7 @@ export const why = {
     {
       n: "04",
       title: "We finish things",
-      body: "Monitoring, runbooks, handover, and a team that can run it without us. Otherwise we haven't done the job.",
+      body: "Monitoring, runbooks, handover, and a team that can run it without us. Otherwise we haven’t done the job.",
     },
   ],
 } as const;
@@ -265,11 +296,11 @@ export type Pain = {
 export const pains: { label: string; headline: string; lede: string; items: Pain[] } = {
   label: "Start here",
   headline: "Which of these sounds like your year?",
-  lede: "People usually arrive with a sentence like one of these. If yours isn\u2019t here, it still belongs.",
+  lede: "People usually arrive with a sentence like one of these. If yours isn’t here, it still belongs.",
   items: [
     {
       id: "idea",
-      quote: "We think there's a better way to do this. Nobody has built it.",
+      quote: "We think there’s a better way to do this. Nobody has built it.",
       short: "An idea nobody has built",
       really:
         "You can describe the outcome, and roughly why it would be better than what exists. What is missing is somebody to think it through properly and then actually build it.",
@@ -280,18 +311,18 @@ export const pains: { label: string; headline: string; lede: string; items: Pain
     },
     {
       id: "capacity",
-      quote: "This needs to exist and it isn't getting built.",
+      quote: "This needs to exist and it isn’t getting built.",
       short: "Stuck on the roadmap",
       really:
         "It matters, everyone agrees it matters, and it has been on the roadmap for three quarters. Your own people are the right people, and they are already committed to something else.",
       weDo:
         "We take the whole thing, the product decisions as well as the code, and bring it back in short releases you can judge as they land.",
       youGet:
-        "The thing built properly, and nobody left holding a system they don't understand.",
+        "The thing built properly, and nobody left holding a system they don’t understand.",
     },
     {
       id: "legacy",
-      quote: "We're scared to touch our own system.",
+      quote: "We’re scared to touch our own system.",
       short: "A system nobody can change",
       really:
         "It runs the business, the people who built it have moved on, and the rules live in three places at once. Every change needs a weekend and a freeze.",
@@ -303,11 +334,11 @@ export const pains: { label: string; headline: string; lede: string; items: Pain
     {
       id: "delivery",
       quote: "Delivery keeps slipping.",
-      short: "Work that won't ship",
+      short: "Work that won’t ship",
       really:
         "The team is busy and shipping slowly. It is rarely the coding. It is reviews waiting, environments breaking, and tests nobody trusts enough to release on.",
       weDo:
-        "We find where the time actually goes, fix the two or three things holding it up, and point AI tooling at the work it is genuinely good at.",
+        "We find where the time actually goes, fix the two or three things holding it up, and point AI tooling at the work it is good at.",
       youGet:
         "A shorter distance between deciding something and it being live, with the same team.",
     },
@@ -329,7 +360,7 @@ export const imagine = {
   label: "Before we build",
   headline: "The brief is where we start, not where we finish.",
   lede: "Most briefs describe the current process with better software around it. The more interesting question is what the thing could be if it were not carrying fifteen years of workarounds. We spend real time there before building anything, because the version you asked for and the version you actually wanted are rarely the same.",
-  promise: "When we come back, expect at least one thing you didn\u2019t ask for and immediately want.",
+  promise: "When we come back, expect at least one thing you didn’t ask for and immediately want.",
   moves: [
     {
       n: "01",
@@ -351,14 +382,14 @@ export const imagine = {
 
 export const engagement = {
   label: "How this works",
-  headline: "You'll see it working before you pay us anything.",
-  lede: "Most firms answer a problem with a proposal. We'd rather answer it with something you can open in a browser and pull apart, because that's the fastest way either of us finds out whether we actually understood you.",
+  headline: "Two meetings, then your call.",
+  lede: "Step through it below. Everything left of the line costs you nothing, and you can walk away at step four owing us nothing at all.",
   steps: [
     {
       n: "01",
       when: "Meeting one",
-      title: "You tell us what's broken",
-      body: "You describe what's slow, expensive or falling over. We ask a lot of questions and present nothing. There is no deck.",
+      title: "You tell us what’s broken",
+      body: "You describe what’s slow, expensive or falling over. We ask a lot of questions and present nothing. There is no deck.",
     },
     {
       n: "02",
@@ -370,30 +401,30 @@ export const engagement = {
       n: "03",
       when: "Meeting two",
       title: "You open it and break it",
-      body: "Most of what we misunderstood shows up in the first ten minutes, which is the point. Tell us, and the next version comes back while you're still thinking about this one.",
+      body: "Most of what we misunderstood shows up in the first ten minutes. Tell us, and the next version comes back while you’re still thinking about this one.",
     },
     {
       n: "04",
       when: "The line",
       title: "You decide",
-      body: "If it's the thing you needed, we take it to production and that's when we talk money. If it isn't, we shake hands and you owe us nothing.",
+      body: "If it’s the thing you needed, we take it to production and that’s when we talk money. If it isn’t, we shake hands and you owe us nothing.",
     },
     {
       n: "05",
       when: "From here",
       title: "We make it real",
-      body: "Tests, evaluations, a security review, monitoring, runbooks, and your people trained to run it. This part takes the time. It's also the part most AI projects never reach.",
+      body: "Tests, evaluations, a security review, monitoring, runbooks, and your people trained to run it. This part takes the time. It’s also the part most AI projects never reach.",
     },
   ],
   boundary:
-    "Fair boundaries, so nobody feels tricked: one problem at a time, a shape we agree before we start, and a couple of weeks of our attention. We aren't giving away production systems. We're giving away the first version, because it's the only honest way for you to judge us on something real. What the production build costs is set out further down this page.",
+    "Some fair boundaries, so nobody feels tricked. One problem at a time, a shape we agree before we start, and a couple of weeks of our attention. We aren’t giving away production systems. We’re giving away the first version, because it’s the only honest way for you to judge us on something real. What the production build costs is set out further down this page.",
   cta: { label: "Bring us a problem", href: "/contact" },
 } as const;
 
 export const aiControl = {
   label: "A power tool, not a strategy",
-  headline: "Anyone can reach a demo now. Getting past one is the job.",
-  lede: "The models got good enough that a convincing prototype takes an afternoon, and we use them for exactly that, every day. It's also why so many AI projects stop at the demo. The demo was never the hard part.",
+  headline: "The demo was never the hard part.",
+  lede: "Anyone can reach a convincing prototype in an afternoon now, and we use the models for exactly that, every day. It is also why so many AI projects stop there. Here is where the model helps, and where a person still has to decide.",
   columns: [
     {
       stage: "Explore",
@@ -408,7 +439,7 @@ export const aiControl = {
     {
       stage: "Prove",
       ai: "Drafts of tests and evaluations",
-      human: "What \u201ccorrect\u201d means for your business",
+      human: "What “correct” means for your business",
     },
     {
       stage: "Guard",
@@ -422,7 +453,7 @@ export const aiControl = {
     },
   ],
   closing:
-    "None of that is a position we hold for its own sake. It's the difference between something that impresses a room and something that still behaves on a Tuesday in November, when the volume triples and nobody senior is online.",
+    "None of that is a position we hold for its own sake. It’s the difference between something that impresses a room and something that still behaves on a Tuesday in November, when the volume triples and nobody senior is online.",
 } as const;
 
 export const pricing: {
@@ -437,7 +468,7 @@ export const pricing: {
   footnote: string;
 } = {
   label: "What it costs",
-  headline: "You'll know the number before we start.",
+  headline: "You’ll know the number before we start.",
   lede: "We quote a fixed price for each phase, and we quote it after you have seen the prototype. Estimating from something that runs is a great deal more accurate than estimating from a document, which is why we can commit to a number instead of billing you by the hour.",
   notes: ["No day rates", "No hourly billing", "No surprise line items", "No lock-in"],
   schedule: [
@@ -492,7 +523,7 @@ export const pricing: {
 export const hardening = {
   label: "What a demo is missing",
   headline: "A demo proves it can work once.",
-  lede: "Here is the same system twice. On the left, what you'll be clicking in week one. On the right, what we hand over. The difference isn't features.",
+  lede: "Here is the same system twice. On the left, what you’ll be clicking in week one. On the right, what we hand over. The difference isn’t features.",
   demo: ["Interface", "Logic", "Model"],
   production: [
     "Automated tests",
@@ -512,9 +543,9 @@ export const hardening = {
 
 export const honesty = {
   label: "Straight about where we are",
-  headline: "We're new. That's exactly why the first version is free.",
+  headline: "We’re new. That’s exactly why the first version is free.",
   body: [
-    "Arthoken hasn't been around long enough to have a wall of client logos, and we aren't going to borrow anybody else's. Asking you to trust a case study you can't verify felt like the wrong way to start, so we do the other thing. We build you something and let you judge it.",
+    "Arthoken hasn’t been around long enough to have a wall of client logos, and we aren’t going to borrow anybody else’s. Asking you to trust a case study you can’t verify felt like the wrong way to start, so we do the other thing. We build you something and let you judge it.",
     "The people who talk to you are the people who do the work. No account manager in between, no team you never meet. That stays true for as long as we can make it stay true.",
   ],
 } as const;
@@ -628,8 +659,8 @@ export const insights = {
   items: [
     {
       category: "AI engineering",
-      title: "The demo is done in an afternoon. Then what?",
-      dek: "A list of everything that stands between a convincing prototype and something you can put your name on.",
+      title: "Everything between a demo and production",
+      dek: "The tests, evaluations, boundaries and handover a convincing prototype does not have yet.",
       status: "Forthcoming",
     },
     {

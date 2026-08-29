@@ -37,9 +37,9 @@ export default function ContactForm() {
     }
 
     if (!ENDPOINT) {
-      const subject = encodeURIComponent(`Enquiry — ${values.organization || values.name}`);
+      const subject = encodeURIComponent(`Enquiry from ${values.organization || values.name}`);
       const body = encodeURIComponent(
-        `Name: ${values.name}\nOrganization: ${values.organization || "—"}\nEmail: ${values.email}\n\n${values.problem}\n`
+        `Name: ${values.name}\nOrganization: ${values.organization || "not given"}\nEmail: ${values.email}\n\n${values.problem}\n`
       );
       window.location.href = `mailto:${site.email}?subject=${subject}&body=${body}`;
       setState("sent");
@@ -146,7 +146,7 @@ export default function ContactForm() {
 
       <p className={styles.status} role="status">
         {state === "sent"
-          ? "Thank you — your message is on its way. We will come back to you shortly."
+          ? "Thank you. Your message is on its way and we will come back to you shortly."
           : state === "failed"
             ? `Something went wrong sending that. Please write to ${site.email} instead.`
             : ""}

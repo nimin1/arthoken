@@ -1,0 +1,374 @@
+.wrap {
+  position: relative;
+  isolation: isolate;
+  background:
+    radial-gradient(80% 90% at 76% 0%, rgba(45, 216, 224, 0.09), transparent 62%),
+    var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--r-panel);
+  padding: clamp(1.1rem, 2vw, 1.75rem) clamp(1.1rem, 2.4vw, 2.25rem)
+    clamp(1.25rem, 2.4vw, 2rem);
+  box-shadow: var(--shadow-lift);
+  color: var(--fg);
+  overflow: hidden;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s4);
+  padding-block-end: var(--s4);
+  border-block-end: 1px solid var(--line);
+}
+
+.hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--accent);
+}
+
+.hint::before {
+  content: "";
+  inline-size: 6px;
+  block-size: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  animation: pulse 2.4s var(--e-inout) infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.25;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* -------------------------------------------------------------
+   The track. Five stops on one rail, with the payment boundary
+   drawn between the fourth and the fifth.
+   ------------------------------------------------------------- */
+.track {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(var(--count), minmax(0, 1fr));
+  padding-block: clamp(3.25rem, 5vw, 4.25rem) clamp(1rem, 2vw, 1.5rem);
+}
+
+.rail,
+.railFill {
+  position: absolute;
+  inset-block-start: clamp(3.25rem, 5vw, 4.25rem);
+  block-size: 1px;
+  pointer-events: none;
+}
+
+.rail {
+  inset-inline: calc(100% / var(--count) / 2);
+  background: var(--line-2);
+}
+
+/* Fills up to the active stop. */
+.railFill {
+  inset-inline-start: calc(100% / var(--count) / 2);
+  inline-size: calc(var(--active) * (100% / var(--count)));
+  background: var(--accent);
+  transition: inline-size var(--t-slow) var(--e-out);
+}
+
+.boundary {
+  position: absolute;
+  inset-block: clamp(1.6rem, 3vw, 2.3rem) 0;
+  inset-inline-start: calc(100% / var(--count) * 4);
+  inline-size: 1px;
+  background: repeating-linear-gradient(
+    180deg,
+    var(--accent) 0 5px,
+    transparent 5px 11px
+  );
+  pointer-events: none;
+}
+
+.boundaryTag {
+  position: absolute;
+  inset-block-start: -1.35rem;
+  inset-inline-end: 0.6rem;
+  white-space: nowrap;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid var(--accent-line, var(--line-2));
+  border-radius: var(--r-pill);
+  padding: 0.3rem 0.7rem;
+  background: var(--bg);
+}
+
+.stop {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 0.5rem;
+  padding-block-start: 0;
+  padding-inline: 0.4rem;
+  text-align: center;
+  cursor: pointer;
+  background: none;
+  border: 0;
+  color: var(--fg-3);
+  transition: color var(--t-mid) var(--e-std);
+}
+
+.stop:hover {
+  color: var(--fg);
+}
+
+.stop[data-state="on"] {
+  color: var(--fg);
+}
+
+.dot {
+  inline-size: 11px;
+  block-size: 11px;
+  border-radius: 50%;
+  border: 1px solid var(--line-3);
+  background: var(--bg);
+  margin-block-start: -5px;
+  transition:
+    background-color var(--t-mid) var(--e-std),
+    border-color var(--t-mid) var(--e-std),
+    box-shadow var(--t-mid) var(--e-out),
+    transform var(--t-mid) var(--e-out);
+}
+
+.stop[data-state="done"] .dot {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.stop[data-state="on"] .dot {
+  background: var(--accent);
+  border-color: var(--accent);
+  transform: scale(1.45);
+  box-shadow: 0 0 0 6px var(--tint);
+}
+
+.stop:hover .dot {
+  border-color: var(--accent);
+}
+
+.stopN {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.13em;
+  color: var(--fg-3);
+}
+
+.stop[data-state="on"] .stopN {
+  color: var(--accent);
+}
+
+.stopWhen {
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: -0.008em;
+  line-height: 1.25;
+  text-wrap: balance;
+}
+
+/* -------------------------------------------------------------
+   The panel below the track.
+   ------------------------------------------------------------- */
+.panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+  gap: clamp(1.5rem, 3vw, 3rem);
+  align-items: start;
+  margin-block-start: clamp(1rem, 2vw, 1.5rem);
+  padding-block-start: clamp(1.25rem, 2.4vw, 1.9rem);
+  border-block-start: 1px solid var(--line);
+  min-block-size: 11rem;
+}
+
+.panel:focus-visible {
+  outline-offset: 6px;
+}
+
+.panelBody {
+  animation: swap var(--t-slow) var(--e-out) both;
+}
+
+@keyframes swap {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 8px, 0);
+  }
+}
+
+.title {
+  font-size: var(--t-display-3);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.024em;
+  color: var(--fg);
+  text-wrap: balance;
+}
+
+.body {
+  margin-block-start: var(--s4);
+  color: var(--fg-2);
+  font-size: var(--t-body);
+  line-height: 1.6;
+  max-inline-size: 52ch;
+}
+
+/* The readout. This is the part that makes the promise concrete. */
+.meter {
+  display: grid;
+  gap: 0.6rem;
+  padding: clamp(1rem, 1.8vw, 1.4rem);
+  border: 1px solid var(--line);
+  border-radius: var(--r-card);
+  background: var(--wash);
+  transition: border-color var(--t-slow) var(--e-std);
+}
+
+.meter[data-paid="false"] {
+  border-color: var(--accent-line, var(--line-2));
+}
+
+.amount {
+  font-size: clamp(2.25rem, 1.5rem + 2.4vw, 3.5rem);
+  font-weight: 600;
+  line-height: 0.95;
+  letter-spacing: -0.034em;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+  transition: color var(--t-slow) var(--e-std);
+}
+
+.meter[data-paid="true"] .amount {
+  font-size: var(--t-display-3);
+  letter-spacing: -0.024em;
+  color: var(--fg);
+}
+
+.meterNote {
+  font-size: var(--t-small);
+  line-height: 1.55;
+  color: var(--fg-2);
+  text-wrap: pretty;
+}
+
+@media (max-width: 900px) {
+  .panel {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .stopWhen {
+    font-size: 0.75rem;
+  }
+
+  .boundaryTag {
+    inset-inline-end: auto;
+    inset-inline-start: 50%;
+    transform: translateX(-50%);
+    font-size: 0.5625rem;
+    padding: 0.25rem 0.5rem;
+  }
+}
+
+@media (max-width: 620px) {
+  /* Below this the five stops stop fitting, so the track becomes a
+     vertical list and the payment boundary becomes a labelled rule. */
+  .track {
+    grid-template-columns: minmax(0, 1fr);
+    padding-block-start: var(--s5);
+    gap: 0;
+  }
+
+  .rail,
+  .railFill,
+  .boundary {
+    display: none;
+  }
+
+  .hint {
+    display: none;
+  }
+
+  .stop {
+    grid-template-columns: auto auto 1fr;
+    justify-items: start;
+    align-items: center;
+    gap: 0.7rem;
+    padding-block: 0.85rem;
+    text-align: start;
+    border-block-end: 1px solid var(--line);
+  }
+
+  .stop:first-of-type {
+    border-block-start: 1px solid var(--line);
+  }
+
+  /* Only the first paid step carries this flag, so it marks the line. */
+  .stop[data-paid="true"] {
+    margin-block-start: 2.6rem;
+    border-block-start: 1px dashed var(--accent);
+  }
+
+  .stop[data-paid="true"]::before {
+    content: "Nothing invoiced before here";
+    position: absolute;
+    inset-block-start: -2.1rem;
+    inset-inline-start: 0;
+    font-family: var(--font-mono);
+    font-size: 0.5625rem;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid var(--line-2);
+    border-radius: var(--r-pill);
+    padding: 0.28rem 0.6rem;
+    background: var(--bg);
+  }
+
+  .dot {
+    margin-block-start: 0;
+  }
+
+  .stop[data-state="on"] {
+    background: var(--wash);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hint::before {
+    animation: none;
+    opacity: 1;
+  }
+
+  .panelBody {
+    animation: none;
+  }
+}
+
+/* Only ever seen inside <noscript>. */
+.fallback {
+  display: grid;
+  gap: var(--s6);
+  margin-block-start: var(--s6);
+  padding-block-start: var(--s5);
+  border-block-start: 1px solid var(--line);
+}
+
+.fallback .body {
+  margin-block-start: var(--s3);
+}

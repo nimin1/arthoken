@@ -9,13 +9,13 @@ import styles from "./page.module.css";
 export const metadata: Metadata = {
   title: "Company",
   description:
-    "Arthoken is an engineering company built for the intelligence era: small senior teams, deep software foundations, and AI applied where it changes an outcome.",
+    "Arthoken is an engineering company. Small senior teams, deep software foundations, and AI applied where it changes an outcome.",
 };
 
 const statements = [
   {
     label: "The name",
-    body: "Artha — meaning, purpose, value. Token — the smallest unit modern intelligence is built from. Arthoken sits where the two meet: systems that are built with meaning rather than assembled from whatever is fashionable.",
+    body: "Artha means purpose and value. A token is the smallest unit modern intelligence is built from. Arthoken sits where the two meet, building systems that carry meaning rather than whatever happens to be fashionable.",
   },
   {
     label: "What we are",

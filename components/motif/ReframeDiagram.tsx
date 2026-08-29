@@ -35,7 +35,7 @@ export default function ReframeDiagram() {
           <span />
           <span />
         </span>
-        <span className="label">The same job, rethought</span>
+        <span className="label label--mono">The same job, rethought</span>
       </figcaption>
 
       <div className={styles.scroller}>

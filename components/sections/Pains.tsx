@@ -20,11 +20,10 @@ export default function Pains() {
   ];
 
   return (
-    <section className="section" id="pains" aria-labelledby="pains-title">
+    <section className="section section--sunk" id="pains" aria-labelledby="pains-title">
       <div className="shell grid12">
         <SectionHead
           id="pains-title"
-          className={styles.head}
           label={pains.label}
           headline={pains.headline}
           lede={pains.lede}

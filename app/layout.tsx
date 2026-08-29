@@ -14,6 +14,7 @@ const grotesk = localFont({
   variable: "--font-grotesk",
   preload: true,
   fallback: ["Helvetica Neue", "Helvetica", "Arial", "sans-serif"],
+  adjustFontFallback: "Arial",
 });
 
 const plexMono = localFont({

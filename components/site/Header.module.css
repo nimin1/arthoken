@@ -128,8 +128,11 @@
 
 .navLink {
   position: relative;
-  padding-block: 0.4rem;
-  font-size: 0.9rem;
+  padding-block: 0.55rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.004em;
   color: var(--fg-2);
   transition: color var(--t-fast) var(--e-std);
 }

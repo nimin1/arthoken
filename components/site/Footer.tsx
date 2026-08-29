@@ -63,7 +63,7 @@ export default function Footer() {
           <span className="label">
             © {new Date().getFullYear()} {site.name}
           </span>
-          <span className="label">Engineering what comes next</span>
+          <span className="label">{site.footerNote}</span>
         </div>
       </div>
     </footer>

@@ -5,11 +5,10 @@ import styles from "./Capabilities.module.css";
 
 export default function Capabilities() {
   return (
-    <section className="section" id="capabilities" aria-labelledby="capabilities-title">
+    <section className="section section--sunk" id="capabilities" aria-labelledby="capabilities-title">
       <div className="shell grid12">
         <SectionHead
           id="capabilities-title"
-          className={styles.head}
           label={capabilities.label}
           headline={capabilities.headline}
           lede={capabilities.lede}
@@ -26,6 +25,10 @@ export default function Capabilities() {
               <span className={`label ${styles.n}`}>{cap.n}</span>
               <h3 className={styles.title}>{cap.title}</h3>
               <p className={styles.lede}>{cap.lede}</p>
+              <p className={styles.when}>
+                <span className="label">Engaged when</span>
+                <span className={styles.whenBody}>{cap.engagedWhen}</span>
+              </p>
             </li>
           ))}
         </ul>

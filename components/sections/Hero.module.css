@@ -1,19 +1,19 @@
 .hero {
   position: relative;
   isolation: isolate;
-  padding-block-start: clamp(7rem, 12vh, 10rem);
-  padding-block-end: clamp(3rem, 6vw, 5rem);
+  padding-block-start: clamp(6rem, 11vh, 9.5rem);
+  padding-block-end: clamp(2.5rem, 5vw, 4rem);
   overflow: clip;
 }
 
-/* Light, not decoration: one source, off to the right, behind the diagram. */
+/* One light source, off to the right, behind the slab. */
 .hero::before {
   content: "";
   position: absolute;
   inset: -20% -10% 0 -10%;
   z-index: -2;
   background:
-    radial-gradient(50% 46% at 74% 34%, var(--tint), transparent 72%),
+    radial-gradient(46% 44% at 78% 32%, var(--tint), transparent 72%),
     linear-gradient(180deg, rgba(255, 255, 255, 0.55), transparent 45%);
 }
 
@@ -27,12 +27,14 @@
     linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
     linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
   background-size: 88px 88px;
-  mask-image: radial-gradient(58% 62% at 46% 34%, #000 20%, transparent 78%);
-  -webkit-mask-image: radial-gradient(58% 62% at 46% 34%, #000 20%, transparent 78%);
+  mask-image: radial-gradient(52% 62% at 34% 34%, #000 20%, transparent 78%);
+  -webkit-mask-image: radial-gradient(52% 62% at 34% 34%, #000 20%, transparent 78%);
 }
 
 .inner {
-  align-items: center;
+  align-items: start;
+  position: relative;
+  z-index: 2;
 }
 
 .copy {
@@ -40,19 +42,27 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  padding-block: clamp(1rem, 4vw, 4rem);
 }
 
 .headline {
-  max-inline-size: 13ch;
+  max-inline-size: 12ch;
 }
 
 .headline > span {
   display: block;
 }
 
+/* The payoff line carries the brand colour. The same move closes the
+   offer band and the final panel, so it reads as a signature rather
+   than decoration. */
+.headline > span:last-child :global(.mask-inner) {
+  color: var(--accent);
+}
+
 .lede {
-  margin-block-start: clamp(1.5rem, 2.6vw, 2rem);
-  max-inline-size: 44ch;
+  margin-block-start: clamp(1.75rem, 3vw, 2.5rem);
+  max-inline-size: 46ch;
 }
 
 .actions {
@@ -63,40 +73,43 @@
   gap: var(--s4);
 }
 
-.figure {
-  position: relative;
-  grid-column: 7 / span 6;
-  margin-inline-end: calc(var(--gutter) * -0.55);
-  padding: clamp(1rem, 2.2vw, 2rem);
-  border: 1px solid var(--line);
-  border-radius: var(--r-card);
-  background-color: var(--bg-panel);
-  background-image: var(--sheen);
-  box-shadow: var(--shadow-panel);
-  overflow: hidden;
-  isolation: isolate;
-}
-
-.figure::before {
-  content: "";
+/* -------------------------------------------------------------
+   The slab. Not a card: it starts past the middle of the shell and
+   runs off the right edge of the viewport, so the diagram reads as
+   architecture the page is built on rather than an illustration
+   placed beside the text.
+   ------------------------------------------------------------- */
+.slab {
   position: absolute;
-  inset: 0;
-  z-index: -1;
-  background: radial-gradient(58% 52% at 58% 42%, var(--tint), transparent 70%);
+  inset-block-start: clamp(10rem, 20vh, 15rem);
+  inset-inline-end: 0;
+  inline-size: min(46vw, 720px);
+  z-index: 1;
+  padding: clamp(1.25rem, 2vw, 1.9rem) clamp(1.25rem, 2vw, 1.9rem) 0;
+  border: 1px solid var(--line);
+  border-inline-end: 0;
+  border-start-start-radius: var(--r-card);
+  background:
+    radial-gradient(58% 60% at 64% 40%, var(--tint), transparent 72%),
+    var(--bg-panel);
+  box-shadow: var(--shadow-lift);
+  overflow: hidden;
 }
 
-.figureLabel {
+.slabTop {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: var(--s4);
   padding-block-end: var(--s4);
-  margin-block-end: var(--s4);
+  margin-block-end: var(--s2);
   border-block-end: 1px solid var(--line);
 }
 
 /* Capability chips under the fold line */
 .strip {
+  position: relative;
+  z-index: 2;
   margin-block-start: clamp(2rem, 4vw, 3.25rem);
   padding-block-start: var(--s5);
   border-block-start: 1px solid var(--line);
@@ -134,37 +147,35 @@
   clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
 }
 
-.stripTail {
-  margin-inline-start: auto;
-  color: var(--fg-3);
+@media (max-width: 1240px) {
+  .slab {
+    inline-size: min(46vw, 560px);
+    inset-block-start: clamp(11rem, 22vh, 16rem);
+  }
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 1000px) {
+  .hero {
+    padding-block-start: clamp(4.5rem, 9vh, 7rem);
+  }
+
   .copy {
-    grid-column: 1 / span 7;
-  }
-
-  .figure {
-    grid-column: 8 / span 5;
-  }
-}
-
-@media (max-width: 900px) {
-  .copy,
-  .figure {
     grid-column: 1 / -1;
-  }
-
-  .figure {
-    margin-block-start: clamp(2.5rem, 8vw, 4rem);
-    margin-inline-end: 0;
+    padding-block-end: 0;
   }
 
   .headline {
-    max-inline-size: none;
+    max-inline-size: 18ch;
   }
 
-  .stripTail {
-    display: none;
+  /* On narrow screens it stops being a slab and becomes a panel in flow. */
+  .slab {
+    position: relative;
+    inset: auto;
+    inline-size: auto;
+    margin-block-start: clamp(2.5rem, 8vw, 4rem);
+    margin-inline: var(--gutter) 0;
+    padding-block-end: var(--s4);
+    border-radius: var(--r-card) 0 0 var(--r-card);
   }
 }

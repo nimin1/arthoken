@@ -1,25 +1,22 @@
-.head {
-  grid-column: 1 / span 7;
-}
-
 .diagram {
   grid-column: 1 / -1;
   margin-block-start: clamp(2.5rem, 5vw, 4rem);
 }
 
 .closing {
-  grid-column: 2 / span 9;
-  margin-block-start: clamp(2.5rem, 4.5vw, 3.5rem);
+  grid-column: 3 / -1;
+  margin-block-start: clamp(3rem, 5.5vw, 4.5rem);
+  padding-inline-start: clamp(1.25rem, 2.5vw, 2.25rem);
+  border-inline-start: 2px solid var(--accent);
   font-size: var(--t-display-3);
-  line-height: 1.18;
+  line-height: 1.2;
   letter-spacing: -0.026em;
   font-weight: 600;
-  max-inline-size: 34ch;
-  text-wrap: balance;
+  max-inline-size: 46ch;
+  text-wrap: pretty;
 }
 
 @media (max-width: 900px) {
-  .head,
   .diagram,
   .closing {
     grid-column: 1 / -1;

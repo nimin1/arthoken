@@ -30,6 +30,14 @@
   --accent-line: rgba(0, 118, 127, 0.3);
   --glow: rgba(0, 146, 156, 0.1);
 
+  /* The accent stage. Used twice on the page and nowhere else. */
+  --stage-bg: #04302f;
+  --stage-bg-2: #06181c;
+  --stage-fg: #f0f7f6;
+  --stage-fg-2: #9ec4c3;
+  --stage-line: rgba(255, 255, 255, 0.14);
+  --stage-accent: #4fe3d6;
+
   /* --- Contextual paints. These flip inside dark panels. --- */
   --wash: rgba(12, 18, 21, 0.032);
   --wash-strong: rgba(12, 18, 21, 0.055);
@@ -38,6 +46,13 @@
   --solid-bg: #0c1215;
   --solid-bg-hover: #1c272c;
   --solid-fg: #fafaf8;
+
+  /* --- Diagram paints. These flip with the panel. --- */
+  --dg-box: #ffffff;
+  --dg-box-ghost: rgba(12, 18, 21, 0.02);
+  --dg-box-accent: rgba(0, 118, 127, 0.06);
+  --dg-box-accent-line: rgba(0, 118, 127, 0.42);
+  --dg-zone: rgba(12, 18, 21, 0.018);
 
   /* --- Compatibility aliases (older components read these) --- */
   --paper: var(--bg);
@@ -73,20 +88,22 @@
   --font-sans: var(--font-grotesk), "Helvetica Neue", Helvetica, Arial, sans-serif;
   --font-mono: var(--font-plex-mono), ui-monospace, "SFMono-Regular", Menlo, monospace;
 
+  --t-display-0: clamp(2.875rem, 1.75rem + 4.7vw, 5.75rem);
   --t-display-1: clamp(2.75rem, 1.95rem + 3.35vw, 4.75rem);
   --t-display-2: clamp(2.125rem, 1.6rem + 2.2vw, 3.75rem);
   --t-display-3: clamp(1.625rem, 1.35rem + 1.15vw, 2.5rem);
   --t-h4: clamp(1.1875rem, 1.11rem + 0.33vw, 1.4375rem);
-  --t-lede: clamp(1.0625rem, 0.98rem + 0.33vw, 1.3125rem);
+  --t-lede: clamp(1.0625rem, 1rem + 0.26vw, 1.25rem);
   --t-body: clamp(1rem, 0.96rem + 0.12vw, 1.0625rem);
   --t-small: 0.9375rem;
-  --t-label: clamp(0.6875rem, 0.66rem + 0.08vw, 0.75rem);
+  --t-label: clamp(0.75rem, 0.72rem + 0.1vw, 0.8125rem);
 
   --lh-title: 1.05;
   --lh-body: 1.62;
-  --tr-display: -0.035em;
+  --tr-display: -0.026em;
   --tr-title: -0.028em;
-  --tr-label: 0.14em;
+  --tr-label: 0.06em;
+  --tr-mono: 0.13em;
 
   /* --- Space --- */
   --s1: 0.25rem;
@@ -154,6 +171,41 @@
   --wash-strong: rgba(255, 255, 255, 0.05);
   --grid-line: rgba(255, 255, 255, 0.028);
   --tint: rgba(45, 216, 224, 0.14);
+  --dg-box: rgba(12, 21, 25, 0.92);
+  --dg-box-ghost: rgba(255, 255, 255, 0.02);
+  --dg-box-accent: rgba(45, 216, 224, 0.07);
+  --dg-box-accent-line: rgba(45, 216, 224, 0.45);
+  --dg-zone: rgba(255, 255, 255, 0.016);
+  /* The compatibility aliases must be redeclared here. A custom
+     property whose value is var(--x) is substituted where it is
+     DECLARED, so an alias set only on :root keeps the light value
+     inside this block and quietly breaks contrast. */
+  --paper: var(--bg);
+  --paper-sunk: var(--bg-raised);
+  --paper-raised: var(--bg-panel);
+  --ink: var(--bg);
+  --ink-raised: var(--bg-raised);
+  --on-ink: var(--fg);
+  --on-ink-2: var(--fg-2);
+  --on-ink-3: var(--fg-3);
+  --rule: var(--line);
+  --rule-strong: var(--line-2);
+  --rule-control: var(--line-3);
+  --rule-ink: var(--line);
+  --rule-ink-strong: var(--line-2);
+  --accent-bright: var(--accent-lit);
+  --accent-wash: rgba(45, 216, 224, 0.08);
+  --accent-line: rgba(45, 216, 224, 0.4);
+  --s-bg: var(--bg);
+  --s-fg: var(--fg);
+  --s-fg-2: var(--fg-2);
+  --s-fg-3: var(--fg-3);
+  --s-rule: var(--line);
+  --s-rule-strong: var(--line-2);
+  --s-accent: var(--accent);
+  --s-accent-line: var(--accent);
+  --shadow-panel: 0 1px 2px rgba(0, 0, 0, 0.4), 0 10px 28px -18px rgba(0, 0, 0, 0.7);
+  --sheen: linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0) 55%);
   --solid-bg: #f3f7f7;
   --solid-bg-hover: #ffffff;
   --solid-fg: #06110f;
@@ -191,7 +243,7 @@ body {
   font-family: var(--font-sans);
   font-size: var(--t-body);
   line-height: var(--lh-body);
-  font-synthesis-weight: none;
+  font-synthesis: none;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -256,6 +308,11 @@ h4 {
 
 p {
   text-wrap: pretty;
+}
+
+strong {
+  font-weight: 500;
+  color: var(--fg);
 }
 
 ::selection {
@@ -345,15 +402,23 @@ p {
 }
 
 /* ---------- Type primitives ---------- */
+/* The default label is the grotesk at medium. Mono is reserved for things
+   that are actually technical: figure captions and diagram annotation. */
 .label {
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   font-size: var(--t-label);
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: var(--tr-label);
   text-transform: uppercase;
   line-height: 1;
   color: var(--fg-3);
   font-variant-numeric: tabular-nums;
+}
+
+.label--mono {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  letter-spacing: var(--tr-mono);
 }
 
 .label--accent {
@@ -513,4 +578,138 @@ p {
 
 .section--tight {
   padding-block-start: clamp(3rem, 5vw, 5rem);
+}
+
+/* =============================================================
+   Composition archetypes.
+   The page is deliberately not one layout repeated. Each section
+   picks one of these, and they differ in width, alignment,
+   loudness and ground so that scrolling has a rhythm.
+   ============================================================= */
+
+/* ---------- Ground ---------- */
+/* Real separation, not a 2% step. Sunk sections sit on a visibly
+   different paper and carry hairlines at both edges. */
+.section--sunk {
+  background: var(--bg-raised);
+  border-block: 1px solid var(--line);
+}
+
+/* The accent stage: full-bleed, dark, teal. Used twice. */
+.stage {
+  position: relative;
+  isolation: isolate;
+  color: var(--stage-fg);
+  background:
+    radial-gradient(120% 140% at 82% 8%, rgba(79, 227, 214, 0.16), transparent 58%),
+    linear-gradient(168deg, var(--stage-bg) 0%, var(--stage-bg-2) 78%);
+}
+
+.stage::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image:
+    linear-gradient(90deg, var(--stage-line) 1px, transparent 1px),
+    linear-gradient(0deg, var(--stage-line) 1px, transparent 1px);
+  background-size: 96px 96px;
+  opacity: 0.22;
+  mask-image: radial-gradient(120% 100% at 50% 0%, #000 15%, transparent 78%);
+}
+
+.stage .label {
+  color: var(--stage-fg-2);
+}
+
+.stage .eyebrow::before {
+  background: var(--stage-accent);
+}
+
+.stage .eyebrow::after {
+  background: var(--stage-line);
+}
+
+/* ---------- Heads ---------- */
+/* The default head no longer stacks headline over lede in a narrow
+   column, which is what left the right half of the page empty.
+   Headline takes the left seven columns, the lede sits opposite it. */
+.head-split {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: subgrid;
+  align-items: start;
+  row-gap: var(--s5);
+  margin-block-end: clamp(2.5rem, 5vw, 4.5rem);
+}
+
+/* The eyebrow spans the full width on its own row so the headline and
+   the column opposite it start level, whatever their heights. */
+.head-split > .head-split__brow {
+  grid-column: 1 / -1;
+  grid-row: 1;
+}
+
+.head-split > .head-split__brow .eyebrow {
+  margin-block-end: 0;
+}
+
+.head-split > .head-split__main {
+  grid-column: 1 / 8;
+  grid-row: 2;
+}
+
+.head-split > .head-split__aside {
+  grid-column: 9 / -1;
+  grid-row: 2;
+}
+
+@media (max-width: 1000px) {
+  .head-split > .head-split__main,
+  .head-split > .head-split__aside {
+    grid-column: 1 / -1;
+    grid-row: auto;
+  }
+}
+
+/* A head with no lede and no eyebrow, used where a section should
+   land quietly against a loud neighbour. */
+.head-quiet {
+  grid-column: 1 / -1;
+  margin-block-end: var(--s7);
+  display: flex;
+  align-items: baseline;
+  gap: var(--s5);
+  border-block-end: 1px solid var(--line);
+  padding-block-end: var(--s4);
+}
+
+/* ---------- Scale ---------- */
+.display-0 {
+  font-size: var(--t-display-0);
+  line-height: 0.94;
+  letter-spacing: -0.032em;
+  font-weight: 600;
+}
+
+/* ---------- Full bleed ---------- */
+.bleed {
+  margin-inline: calc(50% - 50vw);
+  padding-inline: calc(50vw - 50%);
+  max-inline-size: 100vw;
+}
+
+/* ---------- Wide utilities ---------- */
+.span-full {
+  grid-column: 1 / -1;
+}
+
+/* A row of facts that spans the whole shell instead of a narrow column. */
+.factrow {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: var(--s6) var(--col-gap);
+  border-block-start: 1px solid var(--line);
+  padding-block-start: var(--s5);
 }

@@ -16,14 +16,10 @@ const BOX_H = 96;
 
 export default function PipelineDiagram() {
   return (
-    <figure className={styles.frame} data-panel="dark">
+    <figure className={`${styles.frame} ${styles.paper}`}>
       <figcaption className={styles.frameHead}>
-        <span className={styles.dots} aria-hidden="true">
-          <span />
-          <span />
-          <span />
-        </span>
-        <span className="label">Where the model helps, and where it doesn&rsquo;t</span>
+        <span className="label label--mono">Where the model helps, and where it doesn&rsquo;t</span>
+        <span className="label label--mono">fig. 02</span>
       </figcaption>
 
       <div className={styles.scroller}>
@@ -31,7 +27,7 @@ export default function PipelineDiagram() {
           className={styles.svg}
           viewBox="0 0 1200 430"
           role="img"
-          aria-label="A two-lane pipeline. In the top lane the model drafts options, first-pass code, tests, checks and documentation. In the bottom lane people decide the approach, the architecture, what correct means, the security boundaries and who signs off the release. Every step crosses from the model's lane to a person's lane through a gate."
+          aria-label="A two-lane pipeline. In the top lane the model drafts options, first-pass code, tests, checks and documentation. In the bottom lane people decide the approach, the architecture, what correct means, the security boundaries and who signs off the release. Every step crosses from the model’s lane to a person’s lane through a gate."
         >
           <rect x={X0 - 12} y={AI_Y - 12} width={5 * COL_W + 4 * GAP + 24} height={BOX_H + 24} rx={8} className={styles.laneBandAi} />
           <rect x={X0 - 12} y={HU_Y - 12} width={5 * COL_W + 4 * GAP + 24} height={BOX_H + 24} rx={8} className={styles.laneBandHuman} />

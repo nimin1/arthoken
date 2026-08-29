@@ -37,7 +37,7 @@ export default function ContactPage() {
               <p className="label">What helps</p>
               <p className={styles.asideBody}>
                 The outcome you need, the constraint you keep hitting, and what has already been
-                tried. Detail is welcome; a paragraph is enough to start.
+                tried. Detail is welcome, and a paragraph is enough to start.
               </p>
             </div>
             <div className={styles.asideBlock}>

@@ -9,9 +9,9 @@ export default function AiControl() {
       <div className="shell grid12">
         <SectionHead
           id="ai-title"
-          className={styles.head}
           label={aiControl.label}
           headline={aiControl.headline}
+          size="display-3"
           lede={aiControl.lede}
         />
 

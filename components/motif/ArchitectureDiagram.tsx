@@ -47,7 +47,7 @@ export default function ArchitectureDiagram() {
           <span />
           <span />
         </span>
-        <span className="label">Reference architecture — AI in production</span>
+        <span className="label label--mono">Reference architecture for AI in production</span>
       </figcaption>
 
       <div className={styles.scroller}>

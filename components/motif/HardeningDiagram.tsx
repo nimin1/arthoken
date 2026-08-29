@@ -17,7 +17,7 @@ export default function HardeningDiagram() {
           <span />
           <span />
         </span>
-        <span className="label">The same system, twice</span>
+        <span className="label label--mono">The same system, twice</span>
       </figcaption>
 
       <div className={styles.scroller}>
@@ -30,7 +30,7 @@ export default function HardeningDiagram() {
           {/* week one */}
           <rect x={20} y={56} width={340} height={332} rx={8} className={styles.zone} />
           <text className={styles.frameTitle} x={40} y={82}>
-            Week one — what you click
+            Week one, what you click
           </text>
           {hardening.demo.map((item, i) => (
             <g key={`demo-${item}`}>
