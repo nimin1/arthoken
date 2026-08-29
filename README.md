@@ -17,41 +17,45 @@ Node 20+ is required.
 
 ## Design system
 
-Dark, layered, one accent used as light. All tokens live at the top of
-`app/globals.css`.
+A light, printable page with dark instruments set into it. Anything that is a
+diagram — plus the closing panel, the footer and the mobile menu — carries
+`data-panel="dark"`, and the entire token set flips inside it. That single
+attribute is the whole theming mechanism; there is no second stylesheet.
 
-**Surfaces** — depth comes from stacked greys and hairlines, not shadows:
+**Surfaces**
 
-| Token | Value | Use |
+| Token | Light | Inside `data-panel="dark"` |
 | --- | --- | --- |
-| `--bg` | `#05090b` | page ground |
-| `--bg-raised` | `#0a1114` | banded sections |
-| `--bg-panel` | `#0d161a` | cards, diagram frames |
-| `--bg-elev` | `#121e22` | the contact panel |
-| `--line` / `--line-2` / `--line-3` | white at 7.5% / 13% / 22% | hairlines by weight |
-| `--fg` / `--fg-2` / `--fg-3` | `#edf2f3` / `#a5b3b8` / `#7c8b91` | text, secondary, tertiary |
-| `--accent` | `#2dd8e0` | the logo teal, lifted for a dark ground |
-| `--accent-lit` | `#6cecf2` | travelling signal, highlights |
+| `--bg` | `#faf9f6` warm paper | `#080d0f` |
+| `--bg-raised` | `#f2f1ec` banded sections | `#0a1114` |
+| `--bg-panel` | `#ffffff` cards | `#0d161a` |
+| `--fg` / `--fg-2` / `--fg-3` | `#0c1215` / `#4b565c` / `#606a70` | `#edf2f3` / `#a5b3b8` / `#7c8b91` |
+| `--accent` | `#00767f` — the logo teal, deepened to pass AA as text | `#2dd8e0` |
+| `--line` / `--line-2` / `--line-3` | ink at 10% / 16% / 30% | white at 9% / 17% / 28% |
 
-Every panel is the same recipe: `--sheen` (a top-down white wash at 4.5%),
-a 1px `--line` border, `--shadow-panel`, and `--r-card`. A fixed grain
-overlay on `body::after` keeps large dark fields from reading as flat black
-and removes gradient banding.
+Four contextual paints flip with the panel too, so components never need to
+know which ground they are on: `--wash` (hover and inset fills), `--grid-line`
+(backdrop grids), `--tint` (the one teal glow), and `--solid-bg` /
+`--solid-fg` (the filled button, which inverts automatically inside a dark
+panel).
+
+Depth on light comes from a white panel on the warm ground, a hairline border
+and a soft shadow. Depth on dark comes from `--sheen` and a hairline. A five
+percent paper tooth sits over the whole page in `body::after`.
 
 **Type** — self-hosted from `public/fonts` via `next/font/local`, no
 third-party font requests. Schibsted Grotesk Variable for everything visible,
 IBM Plex Mono for labels, indices and diagram annotation. Display weight is
-600 with tight tracking; sizes are fluid `clamp()` ramps that top out at 76px
-so the hero commands without shouting.
+600 with tight tracking; sizes are fluid `clamp()` ramps topping out at 76px.
 
-**Radii** are assigned by function: `--r-control` 6px, `--r-panel` 12px,
-`--r-card` 14px, `--r-pill` for chips and the nav.
+**Radii** by function: `--r-control` 4px, `--r-panel` and `--r-card` 6px,
+`--r-pill` for chips only.
 
 **Motion** — `--e-out`, `--e-inout`, four durations. Three reveal behaviours,
 opted into with a data attribute and driven by one document-level observer
 (`components/ui/RevealRoot.tsx`): `mask` unclips headings, `fade` lifts
-supporting copy 10px, `line` draws rules out from the left. Diagrams animate
-a single travelling dash. Everything respects `prefers-reduced-motion`.
+supporting copy 10px, `line` draws rules out from the left. Diagrams animate a
+single travelling dash. Everything respects `prefers-reduced-motion`.
 
 ## The diagrams
 
@@ -59,9 +63,10 @@ The visual weight of the site is carried by drawings of how Arthoken actually
 builds, not by stock imagery. All geometry is computed on the server, so the
 browser receives finished paths.
 
-- `components/motif/LayerStack.tsx` — the hero. Five planes of a working
-  system in the same 30° projection as the mark, with signal moving between
-  them, and capped pointer parallax (`PointerParallax`, pointer only).
+- `components/motif/LayerStack.tsx` — the hero, sitting in a dark panel on the
+  light page. Five planes of a working system in the same 30° projection as the
+  mark, with signal moving between them, and capped pointer parallax
+  (`PointerParallax`, pointer only).
 - `components/motif/ArchitectureDiagram.tsx` — on `/capabilities`. A reference
   architecture for AI in production. The argument of the drawing: the model does language work,
   the decision stays in ordinary code, a person approves what matters, and

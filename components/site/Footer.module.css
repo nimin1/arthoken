@@ -1,6 +1,7 @@
 .footer {
   position: relative;
   background: var(--bg);
+  color: var(--fg);
   border-block-start: 1px solid var(--line);
   padding-block: clamp(3.5rem, 7vw, 6rem) clamp(2rem, 3vw, 2.75rem);
 }

@@ -20,7 +20,7 @@
   inset: -60% -20% auto -20%;
   block-size: 160%;
   z-index: -1;
-  background: radial-gradient(46% 50% at 80% 62%, rgba(45, 216, 224, 0.11), transparent 72%);
+  background: radial-gradient(46% 50% at 80% 62%, var(--tint), transparent 72%);
 }
 
 .panel::after {
@@ -29,8 +29,8 @@
   inset: 0;
   z-index: -1;
   background-image:
-    linear-gradient(to right, rgba(255, 255, 255, 0.028) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.028) 1px, transparent 1px);
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
   background-size: 56px 56px;
   mask-image: radial-gradient(80% 90% at 20% 0%, #000, transparent 75%);
   -webkit-mask-image: radial-gradient(80% 90% at 20% 0%, #000, transparent 75%);

@@ -52,11 +52,11 @@ textarea.control {
 }
 
 .control[aria-invalid="true"] {
-  border-color: #e0654a;
+  border-color: #c2472c;
 }
 
 .error {
-  color: #ff9a80;
+  color: #a8341c;
   font-size: 0.8125rem;
 }
 
@@ -73,23 +73,17 @@ textarea.control {
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
-  background: #f3f7f7;
-  color: #06110f;
+  background: var(--solid-bg);
+  color: var(--solid-fg);
   padding: 0.95rem 1.4rem;
   border-radius: var(--r-control);
   font-size: 0.9375rem;
   font-weight: 600;
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.6) inset,
-    0 10px 30px -14px rgba(45, 216, 224, 0.5);
-  transition: background-color var(--t-mid) var(--e-std), box-shadow var(--t-mid) var(--e-std);
+  transition: background-color var(--t-mid) var(--e-std);
 }
 
 .submit:hover {
-  background: #ffffff;
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.7) inset,
-    0 14px 40px -14px rgba(45, 216, 224, 0.75);
+  background: var(--solid-bg-hover);
 }
 
 .submit[disabled] {

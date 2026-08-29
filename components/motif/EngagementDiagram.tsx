@@ -61,7 +61,7 @@ function Arrow({ from, to }: { from: number; to: number }) {
 
 export default function EngagementDiagram() {
   return (
-    <figure className={styles.frame}>
+    <figure className={styles.frame} data-panel="dark">
       <figcaption className={styles.frameHead}>
         <span className={styles.dots} aria-hidden="true">
           <span />

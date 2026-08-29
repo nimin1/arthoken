@@ -22,7 +22,7 @@
 
 .header[data-scrolled="true"] {
   --header-h: 4rem;
-  background: color-mix(in srgb, var(--bg) 78%, transparent);
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
   backdrop-filter: blur(18px) saturate(1.4);
   -webkit-backdrop-filter: blur(18px) saturate(1.4);
 }
@@ -97,9 +97,25 @@
   transform: rotate(-6deg) scale(1.05);
 }
 
-.wordmark {
-  inline-size: auto;
+.wordmarkStack {
+  position: relative;
+  display: block;
   block-size: 0.9rem;
+  aspect-ratio: 640 / 100;
+}
+
+.wordmark {
+  position: absolute;
+  inset: 0;
+  inline-size: 100%;
+  block-size: 100%;
+  transition: opacity var(--t-fast) var(--e-std);
+}
+
+/* The wordmark flips when the dark overlay is behind it. */
+.header[data-open="true"] .wordmarkInk,
+.header:not([data-open="true"]) .wordmarkPaper {
+  opacity: 0;
 }
 
 .nav {
@@ -221,7 +237,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(70% 40% at 80% 8%, rgba(45, 216, 224, 0.14), transparent 70%);
+  background: radial-gradient(70% 40% at 80% 8%, var(--tint), transparent 70%);
   pointer-events: none;
 }
 

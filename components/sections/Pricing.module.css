@@ -68,11 +68,11 @@
 }
 
 .slice:nth-child(3)::before {
-  background: rgba(45, 216, 224, 0.6);
+  background: color-mix(in srgb, var(--accent) 60%, transparent);
 }
 
 .slice:nth-child(4)::before {
-  background: rgba(45, 216, 224, 0.34);
+  background: color-mix(in srgb, var(--accent) 34%, transparent);
 }
 
 .free::before {

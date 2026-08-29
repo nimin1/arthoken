@@ -7,7 +7,7 @@ export default function ContactCta() {
   return (
     <section className={styles.section} aria-labelledby="cta-title">
       <div className="shell">
-        <div className={styles.panel}>
+        <div className={styles.panel} data-panel="dark">
           <div className={styles.inner}>
             <div className={styles.copy}>
               <h2 id="cta-title" className={styles.headline}>

@@ -82,10 +82,15 @@ export default function Header() {
 
   return (
     <>
-      <header className={styles.header} data-scrolled={scrolled}>
+      <header
+        className={styles.header}
+        data-scrolled={scrolled}
+        data-open={open}
+        data-panel={open ? "dark" : undefined}
+      >
         <span className={styles.progress} aria-hidden="true" />
         <div className={`shell ${styles.inner}`}>
-          <Link href="/" className={styles.logo} aria-label={`${site.name} — home`}>
+          <Link href="/" className={styles.logo} aria-label={`${site.name}, home`}>
             <Image
               className={styles.mark}
               src="/brand/mark.png"
@@ -95,15 +100,25 @@ export default function Header() {
               priority
               sizes="32px"
             />
-            <Image
-              className={styles.wordmark}
-              src="/brand/wordmark-paper.png"
-              alt={site.name}
-              width={640}
-              height={100}
-              priority
-              sizes="130px"
-            />
+            <span className={styles.wordmarkStack}>
+              <Image
+                className={`${styles.wordmark} ${styles.wordmarkInk}`}
+                src="/brand/wordmark-ink.png"
+                alt={site.name}
+                width={640}
+                height={100}
+                priority
+                sizes="130px"
+              />
+              <Image
+                className={`${styles.wordmark} ${styles.wordmarkPaper}`}
+                src="/brand/wordmark-paper.png"
+                alt=""
+                width={640}
+                height={100}
+                sizes="130px"
+              />
+            </span>
           </Link>
 
           <div className={styles.right}>
@@ -148,6 +163,7 @@ export default function Header() {
         id="mobile-menu"
         ref={overlayRef}
         className={styles.overlay}
+        data-panel="dark"
         data-open={open}
         aria-hidden={!open}
         inert={!open}

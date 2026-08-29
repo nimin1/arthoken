@@ -14,7 +14,7 @@ const MOVED = [
 
 export default function StranglerDiagram() {
   return (
-    <figure className={styles.frame}>
+    <figure className={styles.frame} data-panel="dark">
       <figcaption className={styles.frameHead}>
         <span className={styles.dots} aria-hidden="true">
           <span />

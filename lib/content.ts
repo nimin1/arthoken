@@ -10,7 +10,9 @@
 export const site = {
   name: "Arthoken",
   tagline: "Built with meaning.",
-  descriptor: "AI-native software engineering and consulting",
+  descriptor: "AI-augmented software engineering and consulting",
+  /** Short form, used in the browser tab and social cards. */
+  titleSuffix: "AI-augmented software engineering",
   description:
     "Arthoken builds software for companies with hard problems. New products, modern platforms, and AI that survives contact with production.",
   email: "hello@arthoken.com",

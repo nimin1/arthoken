@@ -47,7 +47,11 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className={styles.figure}>
+        <div className={styles.figure} data-panel="dark">
+          <div className={styles.figureLabel}>
+            <span className="label">System layers</span>
+            <span className="label">fig. 01</span>
+          </div>
           <PointerParallax strength={18}>
             <LayerStack />
           </PointerParallax>

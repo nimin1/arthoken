@@ -1,33 +1,43 @@
 /* =============================================================
-   Arthoken — design system v2
-   A dark, layered system. Depth comes from surfaces and hairlines,
-   never from decoration. One accent, used as light.
+   Arthoken — design system v3
+   A light, printable page with dark instruments set into it.
+   Anything that is a diagram carries data-panel="dark" and the
+   whole token set flips inside it.
    ============================================================= */
 
 :root {
   /* --- Ground and surfaces --- */
-  --bg: #05090b;
-  --bg-raised: #0a1114;
-  --bg-panel: #0d161a;
-  --bg-elev: #121e22;
+  --bg: #faf9f6;
+  --bg-raised: #f2f1ec;
+  --bg-panel: #ffffff;
+  --bg-elev: #ffffff;
 
   /* --- Hairlines --- */
-  --line: rgba(255, 255, 255, 0.09);
-  --line-2: rgba(255, 255, 255, 0.17);
-  --line-3: rgba(255, 255, 255, 0.28);
+  --line: rgba(12, 18, 21, 0.1);
+  --line-2: rgba(12, 18, 21, 0.16);
+  --line-3: rgba(12, 18, 21, 0.3);
 
   /* --- Foreground --- */
-  --fg: #edf2f3;
-  --fg-2: #a5b3b8;
-  --fg-3: #7c8b91;
+  --fg: #0c1215;
+  --fg-2: #4b565c;
+  --fg-3: #606a70;
 
-  /* --- Brand --- */
-  --accent: #2dd8e0;
-  --accent-lit: #6cecf2;
-  --accent-deep: #00a5b0;
-  --accent-wash: rgba(45, 216, 224, 0.08);
-  --accent-line: rgba(45, 216, 224, 0.32);
-  --glow: rgba(45, 216, 224, 0.12);
+  /* --- Brand. The deeper teal reads as ink on paper and passes AA. --- */
+  --accent: #00767f;
+  --accent-lit: #00929c;
+  --accent-deep: #00565d;
+  --accent-wash: rgba(0, 118, 127, 0.07);
+  --accent-line: rgba(0, 118, 127, 0.3);
+  --glow: rgba(0, 146, 156, 0.1);
+
+  /* --- Contextual paints. These flip inside dark panels. --- */
+  --wash: rgba(12, 18, 21, 0.032);
+  --wash-strong: rgba(12, 18, 21, 0.055);
+  --grid-line: rgba(12, 18, 21, 0.038);
+  --tint: rgba(0, 146, 156, 0.1);
+  --solid-bg: #0c1215;
+  --solid-bg-hover: #1c272c;
+  --solid-fg: #fafaf8;
 
   /* --- Compatibility aliases (older components read these) --- */
   --paper: var(--bg);
@@ -55,9 +65,9 @@
   --s-accent-line: var(--accent);
 
   /* --- Elevation --- */
-  --sheen: linear-gradient(180deg, rgba(255, 255, 255, 0.028), rgba(255, 255, 255, 0) 48%);
-  --shadow-panel: 0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 24px 50px -38px rgba(0, 0, 0, 0.9);
-  --shadow-lift: 0 1px 0 rgba(255, 255, 255, 0.05) inset, 0 32px 70px -44px rgba(0, 0, 0, 1);
+  --sheen: linear-gradient(180deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0) 55%);
+  --shadow-panel: 0 1px 2px rgba(12, 18, 21, 0.05), 0 10px 28px -18px rgba(12, 18, 21, 0.18);
+  --shadow-lift: 0 2px 4px rgba(12, 18, 21, 0.06), 0 26px 60px -30px rgba(12, 18, 21, 0.3);
 
   /* --- Type --- */
   --font-sans: var(--font-grotesk), "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -113,7 +123,47 @@
   --t-slow: 620ms;
   --t-xslow: 1100ms;
 
+  color-scheme: light;
+}
+
+/* -------------------------------------------------------------
+   Dark instruments. Every diagram, the closing panel and the
+   footer sit inside one of these, and inherit a flipped palette.
+   ------------------------------------------------------------- */
+[data-panel="dark"] {
+  --bg: #080d0f;
+  --bg-raised: #0a1114;
+  --bg-panel: #0d161a;
+  --bg-elev: #121e22;
+
+  --line: rgba(255, 255, 255, 0.09);
+  --line-2: rgba(255, 255, 255, 0.17);
+  --line-3: rgba(255, 255, 255, 0.28);
+
+  --fg: #edf2f3;
+  --fg-2: #a5b3b8;
+  --fg-3: #7c8b91;
+
+  --accent: #2dd8e0;
+  --accent-lit: #6cecf2;
+  --accent-deep: #00a5b0;
+  --accent-wash: rgba(45, 216, 224, 0.08);
+  --accent-line: rgba(45, 216, 224, 0.32);
+
+  --wash: rgba(255, 255, 255, 0.022);
+  --wash-strong: rgba(255, 255, 255, 0.05);
+  --grid-line: rgba(255, 255, 255, 0.028);
+  --tint: rgba(45, 216, 224, 0.14);
+  --solid-bg: #f3f7f7;
+  --solid-bg-hover: #ffffff;
+  --solid-fg: #06110f;
+
+  --sheen: linear-gradient(180deg, rgba(255, 255, 255, 0.028), rgba(255, 255, 255, 0) 48%);
+  --shadow-panel: 0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 24px 50px -38px rgba(0, 0, 0, 0.9);
+  --shadow-lift: 0 1px 0 rgba(255, 255, 255, 0.05) inset, 0 32px 70px -44px rgba(0, 0, 0, 1);
+
   color-scheme: dark;
+  color: var(--fg);
 }
 
 /* ---------- Reset ---------- */
@@ -156,8 +206,8 @@ body::after {
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  opacity: 0.22;
-  mix-blend-mode: overlay;
+  opacity: 0.05;
+  mix-blend-mode: multiply;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
 }
 
@@ -210,7 +260,7 @@ p {
 
 ::selection {
   background: var(--accent);
-  color: #04292c;
+  color: #ffffff;
 }
 
 :focus-visible {
@@ -226,7 +276,7 @@ p {
   z-index: 200;
   padding: 0.7rem 1.1rem;
   background: var(--accent);
-  color: #04292c;
+  color: #ffffff;
   font-family: var(--font-mono);
   font-size: var(--t-label);
   letter-spacing: var(--tr-label);

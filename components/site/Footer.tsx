@@ -10,10 +10,10 @@ const contactLinks = [
 
 export default function Footer() {
   return (
-    <footer className={styles.footer} data-surface="ink">
+    <footer className={styles.footer} data-panel="dark">
       <div className="shell grid12">
         <div className={styles.brand}>
-          <Link href="/" className={styles.lockup} aria-label={`${site.name} — home`}>
+          <Link href="/" className={styles.lockup} aria-label={`${site.name}, home`}>
             <Image
               className={styles.mark}
               src="/brand/mark.png"

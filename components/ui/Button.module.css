@@ -62,23 +62,22 @@
 
 /* Solid: near-white on dark, with the brand showing only as light. */
 .primary {
-  background: #f3f7f7;
-  color: #06110f;
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+  background: var(--solid-bg);
+  color: var(--solid-fg);
 }
 
 .primary:hover {
-  background: #ffffff;
+  background: var(--solid-bg-hover);
 }
 
 .ghost {
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--wash);
   color: var(--fg);
   border-color: var(--line-2);
 }
 
 .ghost:hover {
-  background: rgba(255, 255, 255, 0.06);
+  background: var(--wash-strong);
   border-color: var(--line-3);
 }
 

@@ -77,7 +77,7 @@ export default function LayerStack({ className }: { className?: string }) {
     <div className={[styles.wrap, className].filter(Boolean).join(" ")}>
       <svg
         className={styles.svg}
-        viewBox="0 0 780 660"
+        viewBox="118 56 664 516"
         role="img"
         aria-label="A diagram of a layered software system: infrastructure, data, services, intelligence and experience, with signal travelling between the layers."
       >

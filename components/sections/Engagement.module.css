@@ -59,7 +59,7 @@
   padding: clamp(1.25rem, 2.2vw, 1.75rem);
   border: 1px solid var(--line);
   border-radius: var(--r-panel);
-  background: rgba(255, 255, 255, 0.02);
+  background: var(--wash);
 }
 
 .boundaryLabel {

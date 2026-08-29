@@ -40,7 +40,7 @@ export default function ArchitectureDiagram() {
   const midY = ROW1 + H / 2;
 
   return (
-    <figure className={styles.frame}>
+    <figure className={styles.frame} data-panel="dark">
       <figcaption className={styles.frameHead}>
         <span className={styles.dots} aria-hidden="true">
           <span />
