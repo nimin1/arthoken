@@ -5,11 +5,10 @@ import styles from "./Architecture.module.css";
 
 export default function Architecture() {
   return (
-    <section className={`section ${styles.section}`} id="ai" aria-labelledby="architecture-title">
+    <section className={`section ${styles.section}`} id="architecture" aria-labelledby="architecture-title">
       <div className="shell grid12">
         <SectionHead
           id="architecture-title"
-          className={styles.head}
           label={architecture.label}
           headline={architecture.headline}
           lede={architecture.lede}

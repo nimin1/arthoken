@@ -9,7 +9,6 @@ export default function Hardening() {
       <div className="shell grid12">
         <SectionHead
           id="hardening-title"
-          className={styles.head}
           label={hardening.label}
           headline={hardening.headline}
           lede={hardening.lede}

@@ -7,13 +7,12 @@ export default function AiEngineering() {
     <section
       className={`section ${styles.section}`}
       data-surface="ink"
-      id="ai"
+      id="ai-engineering"
       aria-labelledby="ai-title"
     >
       <div className="shell grid12">
         <SectionHead
           id="ai-title"
-          className={styles.head}
           label={ai.label}
           headline={ai.headline}
           lede={ai.lede}

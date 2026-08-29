@@ -9,7 +9,6 @@ export default function Modernization() {
       <div className="shell grid12">
         <SectionHead
           id="modernization-title"
-          className={styles.head}
           label={modernization.label}
           headline={modernization.headline}
           lede={modernization.lede}

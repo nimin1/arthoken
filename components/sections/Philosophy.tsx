@@ -14,6 +14,7 @@ export default function Philosophy() {
         <div className={styles.aside}>
           <SectionHead
             id="philosophy-title"
+            variant="stacked"
             label={philosophy.label}
             headline={philosophy.headline}
             lede={philosophy.lede}

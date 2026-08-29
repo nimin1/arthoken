@@ -125,7 +125,6 @@
 }
 
 @media (max-width: 900px) {
-  .head,
   .list {
     grid-column: 1 / -1;
   }

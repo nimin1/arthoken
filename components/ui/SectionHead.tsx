@@ -7,8 +7,12 @@ type Props = {
   /** Visual weight. Sections are deliberately not all the same loudness. */
   size?: "display-3" | "display-2" | "display-1" | "display-0";
   /**
-   * split  — headline left, lede opposite it. Fills the full shell.
-   * stacked — lede under the headline, in a narrow column.
+   * split   — headline left, lede opposite it, across the full 12-column
+   *           shell. The default, and only valid when the head is a direct
+   *           child of a full-width `.grid12`. Placing it inside a narrower
+   *           container squeezes the lede into a one-word ribbon.
+   * stacked — lede under the headline. Use inside any narrow column,
+   *           sidebar or card.
    */
   variant?: "split" | "stacked";
   wide?: boolean;

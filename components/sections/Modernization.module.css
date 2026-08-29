@@ -1,7 +1,3 @@
-.head {
-  grid-column: 1 / span 6;
-}
-
 .steps {
   grid-column: 8 / span 5;
   align-self: end;
@@ -35,7 +31,6 @@
 }
 
 @media (max-width: 900px) {
-  .head,
   .steps,
   .diagram {
     grid-column: 1 / -1;

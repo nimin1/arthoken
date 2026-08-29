@@ -11,10 +11,6 @@
   background: radial-gradient(60% 50% at 50% 0%, var(--tint), transparent 70%);
 }
 
-.head {
-  grid-column: 1 / span 7;
-}
-
 .diagram {
   grid-column: 1 / -1;
   margin-block-start: clamp(2.5rem, 5vw, 4rem);
@@ -49,7 +45,6 @@
 }
 
 @media (max-width: 900px) {
-  .head,
   .diagram,
   .notes {
     grid-column: 1 / -1;

@@ -589,7 +589,7 @@ export const honesty = {
 } as const;
 
 export const architecture = {
-  label: "How we build AI",
+  label: "Reference architecture",
   headline: "AI inside a system you can reason about.",
   lede: "A model on its own is a demo. This is the shape of what we actually put into production.",
   notes: [
@@ -646,9 +646,9 @@ export const philosophy = {
 } as const;
 
 export const ai = {
-  label: "How we build AI",
+  label: "What we build with",
   headline: ["AI changes the tools.", "Good engineering still matters."],
-  lede: "A model in a demo is a demo. A model in production is part of a real system, and it has to be built like one.",
+  lede: "On the left, what the models make possible. On the right, what makes them safe to depend on. Neither half is any use without the other.",
   columns: [
     {
       heading: "What we build with",
@@ -673,7 +673,7 @@ export const ai = {
     },
   ],
   closing:
-    "We don’t replace engineering with prompting. We put AI inside a system you can reason about.",
+    "Prompting is the easy half. The rest is the same engineering discipline that anything people depend on has always needed.",
 } as const;
 
 export const talent = {
