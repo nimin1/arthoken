@@ -1,0 +1,107 @@
+.section {
+  padding-block: clamp(4rem, 8vw, 7rem);
+}
+
+.panel {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: clamp(2.5rem, 6vw, 5.5rem);
+  border: 1px solid var(--line-2);
+  border-radius: var(--r-card);
+  background-color: var(--bg-elev);
+  background-image: var(--sheen);
+  box-shadow: var(--shadow-lift);
+}
+
+.panel::before {
+  content: "";
+  position: absolute;
+  inset: -60% -20% auto -20%;
+  block-size: 160%;
+  z-index: -1;
+  background: radial-gradient(46% 50% at 80% 62%, rgba(45, 216, 224, 0.11), transparent 72%);
+}
+
+.panel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.028) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.028) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(80% 90% at 20% 0%, #000, transparent 75%);
+  -webkit-mask-image: radial-gradient(80% 90% at 20% 0%, #000, transparent 75%);
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--col-gap);
+  align-items: end;
+}
+
+.copy {
+  grid-column: 1 / span 7;
+}
+
+.headline {
+  font-size: var(--t-display-2);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  font-weight: 600;
+  max-inline-size: 16ch;
+}
+
+.headline > span {
+  display: block;
+}
+
+.headline > span:last-child {
+  color: var(--fg-2);
+}
+
+.body {
+  margin-block-start: clamp(1.5rem, 2.5vw, 2rem);
+  color: var(--fg-2);
+  font-size: var(--t-lede);
+  line-height: 1.5;
+  max-inline-size: 44ch;
+}
+
+.actions {
+  grid-column: 8 / span 5;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--s4);
+}
+
+.secondRung {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s4);
+}
+
+.email {
+  color: var(--fg-3);
+  font-size: var(--t-small);
+}
+
+@media (max-width: 900px) {
+  .inner {
+    grid-template-columns: 1fr;
+  }
+
+  .copy,
+  .actions {
+    grid-column: 1 / -1;
+  }
+
+  .actions {
+    margin-block-start: var(--s7);
+  }
+}

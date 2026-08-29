@@ -1,0 +1,27 @@
+.head {
+  grid-column: 1 / span 7;
+}
+
+.diagram {
+  grid-column: 1 / -1;
+  margin-block-start: clamp(2.5rem, 5vw, 4rem);
+}
+
+.closing {
+  grid-column: 2 / span 9;
+  margin-block-start: clamp(2.5rem, 4.5vw, 3.5rem);
+  font-size: var(--t-display-3);
+  line-height: 1.18;
+  letter-spacing: -0.026em;
+  font-weight: 600;
+  max-inline-size: 34ch;
+  text-wrap: balance;
+}
+
+@media (max-width: 900px) {
+  .head,
+  .diagram,
+  .closing {
+    grid-column: 1 / -1;
+  }
+}

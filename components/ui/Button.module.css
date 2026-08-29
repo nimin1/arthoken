@@ -1,0 +1,101 @@
+.base {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding-inline: 1.4rem;
+  padding-block: 0.95rem;
+  border: 1px solid transparent;
+  border-radius: var(--r-control);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  letter-spacing: -0.006em;
+  line-height: 1;
+  isolation: isolate;
+  transition:
+    background-color var(--t-mid) var(--e-std),
+    border-color var(--t-mid) var(--e-std),
+    box-shadow var(--t-mid) var(--e-std),
+    color var(--t-mid) var(--e-std),
+    transform var(--t-mid) var(--e-out);
+  will-change: transform;
+}
+
+.labelWrap {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  block-size: 1em;
+}
+
+.label {
+  display: block;
+  transition: transform var(--t-slow) var(--e-out);
+}
+
+.labelGhost {
+  position: absolute;
+  inset-block-start: 100%;
+  inset-inline-start: 0;
+  display: block;
+  transition: transform var(--t-slow) var(--e-out);
+}
+
+.base:hover .label,
+.base:focus-visible .label,
+.base:hover .labelGhost,
+.base:focus-visible .labelGhost {
+  transform: translateY(-100%);
+}
+
+.arrow {
+  display: block;
+  inline-size: 0.75rem;
+  flex: none;
+  transition: transform var(--t-mid) var(--e-out);
+}
+
+.base:hover .arrow,
+.base:focus-visible .arrow {
+  transform: translateX(3px);
+}
+
+/* Solid: near-white on dark, with the brand showing only as light. */
+.primary {
+  background: #f3f7f7;
+  color: #06110f;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+}
+
+.primary:hover {
+  background: #ffffff;
+}
+
+.ghost {
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--fg);
+  border-color: var(--line-2);
+}
+
+.ghost:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: var(--line-3);
+}
+
+/* Kept for API compatibility — the site is one surface now. */
+.onInk {
+  color: inherit;
+}
+
+.small {
+  padding-inline: 1.05rem;
+  padding-block: 0.7rem;
+  font-size: 0.875rem;
+  gap: 0.55rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .base {
+    transform: none !important;
+  }
+}

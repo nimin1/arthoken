@@ -1,0 +1,35 @@
+.section {
+  background: var(--bg-raised);
+  border-block: 1px solid var(--line);
+}
+
+.head {
+  grid-column: 1 / span 6;
+}
+
+.closing {
+  grid-column: 8 / span 5;
+  align-self: end;
+  color: var(--fg);
+  font-size: var(--t-lede);
+  line-height: 1.5;
+  padding-inline-start: var(--s5);
+  border-inline-start: 1px solid var(--accent-line);
+}
+
+.diagram {
+  grid-column: 1 / -1;
+  margin-block-start: clamp(2.5rem, 5vw, 4rem);
+}
+
+@media (max-width: 900px) {
+  .head,
+  .closing,
+  .diagram {
+    grid-column: 1 / -1;
+  }
+
+  .closing {
+    margin-block-start: var(--s6);
+  }
+}

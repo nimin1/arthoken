@@ -1,0 +1,173 @@
+.head {
+  grid-column: 1 / span 7;
+}
+
+.aside {
+  grid-column: 9 / span 4;
+  align-self: end;
+}
+
+.range {
+  padding-inline-start: var(--s5);
+  border-inline-start: 1px solid var(--accent-line);
+  color: var(--fg);
+  font-size: var(--t-lede);
+  line-height: 1.45;
+  margin-block-end: var(--s6);
+}
+
+.notes {
+  border-block-start: 1px solid var(--line-2);
+}
+
+.note {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  padding-block: 0.7rem;
+  border-block-end: 1px solid var(--line);
+  color: var(--fg-2);
+  font-size: 0.9375rem;
+}
+
+.note::before {
+  content: "";
+  inline-size: 9px;
+  block-size: 1px;
+  flex: none;
+  background: var(--accent);
+  translate: 0 -0.3em;
+}
+
+/* The money, drawn to scale. The first stretch is empty on purpose. */
+.schedule {
+  grid-column: 1 / -1;
+  margin-block-start: clamp(2.5rem, 5vw, 4rem);
+  display: grid;
+  grid-template-columns: 22fr 31fr 31fr 16fr;
+  gap: var(--col-gap);
+}
+
+.slice {
+  position: relative;
+  padding-block-start: var(--s5);
+}
+
+.slice::before {
+  content: "";
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline: 0;
+  block-size: 4px;
+  border-radius: 2px;
+  background: var(--accent);
+}
+
+.slice:nth-child(2)::before {
+  background: var(--accent);
+}
+
+.slice:nth-child(3)::before {
+  background: rgba(45, 216, 224, 0.6);
+}
+
+.slice:nth-child(4)::before {
+  background: rgba(45, 216, 224, 0.34);
+}
+
+.free::before {
+  background: none;
+  border-block-start: 2px dashed var(--line-3);
+  block-size: 0;
+}
+
+.amount {
+  font-size: clamp(1.75rem, 1.3rem + 1.6vw, 2.5rem);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 1;
+}
+
+.free .amount {
+  color: var(--fg-3);
+}
+
+.when {
+  margin-block-start: var(--s4);
+  font-size: 1.0625rem;
+  font-weight: 600;
+  letter-spacing: -0.014em;
+  line-height: 1.25;
+}
+
+.sliceBody {
+  margin-block-start: var(--s3);
+  color: var(--fg-2);
+  font-size: 0.9375rem;
+  line-height: 1.55;
+}
+
+.terms {
+  grid-column: 1 / -1;
+  margin-block-start: clamp(2.5rem, 4.5vw, 3.5rem);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--s6) clamp(2rem, 5vw, 5rem);
+  padding-block-start: clamp(2rem, 3.5vw, 2.75rem);
+  border-block-start: 1px solid var(--line-2);
+}
+
+.term {
+  display: grid;
+  grid-template-columns: 1.75rem minmax(0, 1fr);
+  column-gap: var(--s4);
+}
+
+.termMark {
+  inline-size: 7px;
+  block-size: 7px;
+  background: var(--accent);
+  clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+  margin-block-start: 0.5em;
+}
+
+.termTitle {
+  font-size: var(--t-h4);
+  font-weight: 600;
+  letter-spacing: -0.016em;
+}
+
+.termBody {
+  margin-block-start: var(--s3);
+  color: var(--fg-2);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+.footnote {
+  grid-column: 1 / -1;
+  margin-block-start: clamp(2rem, 3.5vw, 2.75rem);
+  color: var(--fg-3);
+  font-size: 0.875rem;
+  max-inline-size: 70ch;
+}
+
+@media (max-width: 900px) {
+  .head,
+  .aside,
+  .schedule,
+  .terms,
+  .footnote {
+    grid-column: 1 / -1;
+  }
+
+  .aside {
+    margin-block-start: var(--s6);
+  }
+
+  .schedule,
+  .terms {
+    grid-template-columns: 1fr;
+    gap: var(--s6);
+  }
+}

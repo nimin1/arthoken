@@ -1,0 +1,33 @@
+.formWrap {
+  grid-column: 1 / span 7;
+}
+
+.aside {
+  grid-column: 9 / span 4;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s6);
+}
+
+.asideBlock {
+  border-block-start: 1px solid var(--rule-strong);
+  padding-block-start: var(--s4);
+}
+
+.asideBody {
+  margin-block-start: var(--s3);
+  color: var(--fg-2);
+  font-size: var(--t-small);
+  line-height: 1.55;
+}
+
+@media (max-width: 900px) {
+  .formWrap,
+  .aside {
+    grid-column: 1 / -1;
+  }
+
+  .aside {
+    margin-block-start: var(--s8);
+  }
+}

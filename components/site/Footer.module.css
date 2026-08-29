@@ -1,0 +1,120 @@
+.footer {
+  position: relative;
+  background: var(--bg);
+  border-block-start: 1px solid var(--line);
+  padding-block: clamp(3.5rem, 7vw, 6rem) clamp(2rem, 3vw, 2.75rem);
+}
+
+.brand {
+  grid-column: 1 / span 4;
+}
+
+.lockup {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.footer::before {
+  content: "";
+  position: absolute;
+  inset-block-start: -1px;
+  inset-inline: 0;
+  block-size: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent-line) 30%, var(--accent-line) 70%, transparent);
+  opacity: 0.5;
+}
+
+.mark {
+  inline-size: auto;
+  block-size: 2rem;
+}
+
+.wordmark {
+  inline-size: auto;
+  block-size: 1rem;
+}
+
+.tagline {
+  margin-block-start: var(--s5);
+  color: var(--on-ink-3);
+}
+
+.descriptor {
+  margin-block-start: var(--s3);
+  color: var(--on-ink-2);
+  font-size: var(--t-small);
+  max-inline-size: 30ch;
+}
+
+.cols {
+  grid-column: 7 / span 6;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: var(--col-gap);
+}
+
+.colHead {
+  padding-block-end: var(--s4);
+  border-block-end: 1px solid var(--rule-ink);
+}
+
+.links {
+  margin-block-start: var(--s4);
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.link {
+  position: relative;
+  align-self: flex-start;
+  color: var(--on-ink-2);
+  font-size: 0.9375rem;
+  transition: color var(--t-fast) var(--e-std);
+}
+
+.link::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  inset-block-end: -2px;
+  block-size: 1px;
+  background: var(--accent-bright);
+  transform: scaleX(0);
+  transform-origin: 100% 50%;
+  transition: transform var(--t-mid) var(--e-inout);
+}
+
+.link:hover {
+  color: var(--on-ink);
+}
+
+.link:hover::after,
+.link:focus-visible::after {
+  transform: scaleX(1);
+  transform-origin: 0 50%;
+}
+
+.base {
+  grid-column: 1 / -1;
+  margin-block-start: clamp(3rem, 6vw, 5rem);
+  padding-block-start: var(--s4);
+  border-block-start: 1px solid var(--rule-ink);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--s4);
+  color: var(--on-ink-3);
+}
+
+@media (max-width: 900px) {
+  .brand,
+  .cols {
+    grid-column: 1 / -1;
+  }
+
+  .cols {
+    margin-block-start: var(--s8);
+  }
+}

@@ -1,0 +1,18 @@
+.statement {
+  grid-column: span 4;
+  border-block-start: 1px solid var(--rule-strong);
+  padding-block-start: var(--s5);
+}
+
+.body {
+  margin-block-start: var(--s4);
+  color: var(--fg-2);
+  max-inline-size: 42ch;
+}
+
+@media (max-width: 900px) {
+  .statement {
+    grid-column: 1 / -1;
+    margin-block-end: var(--s6);
+  }
+}

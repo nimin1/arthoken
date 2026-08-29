@@ -1,0 +1,19 @@
+.head {
+  display: block;
+}
+
+.headline {
+  max-inline-size: 20ch;
+}
+
+.headline.wide {
+  max-inline-size: 26ch;
+}
+
+.lede {
+  margin-block-start: var(--s5);
+}
+
+.line {
+  display: block;
+}

@@ -1,0 +1,86 @@
+.head {
+  grid-column: 1 / span 7;
+}
+
+.cards {
+  grid-column: 1 / -1;
+  margin-block-start: clamp(2.5rem, 5vw, 4rem);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--col-gap);
+}
+
+.card {
+  position: relative;
+  padding: clamp(1.5rem, 2.2vw, 2rem);
+  border: 1px solid var(--line);
+  border-radius: var(--r-card);
+  background-image: var(--sheen);
+  background-color: var(--bg-panel);
+  box-shadow: var(--shadow-panel);
+  overflow: hidden;
+  transition:
+    border-color var(--t-slow) var(--e-out),
+    transform var(--t-slow) var(--e-out);
+}
+
+.card:hover {
+  border-color: var(--line-2);
+  transform: translateY(-3px);
+}
+
+/* A quiet corner light that only appears on approach. */
+.card::after {
+  content: "";
+  position: absolute;
+  inset-block-start: -40%;
+  inset-inline-end: -30%;
+  inline-size: 70%;
+  block-size: 90%;
+  background: radial-gradient(circle, rgba(45, 216, 224, 0.16), transparent 65%);
+  opacity: 0;
+  transition: opacity var(--t-slow) var(--e-out);
+  pointer-events: none;
+}
+
+.card:hover::after {
+  opacity: 1;
+}
+
+.cardTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s4);
+  padding-block-end: var(--s5);
+  border-block-end: 1px solid var(--line);
+}
+
+.glyph {
+  inline-size: 34px;
+  block-size: 34px;
+}
+
+.term {
+  margin-block-start: var(--s5);
+  font-size: var(--t-h4);
+  font-weight: 600;
+  letter-spacing: -0.018em;
+}
+
+.gloss {
+  margin-block-start: var(--s3);
+  color: var(--fg-2);
+  font-size: var(--t-small);
+  line-height: 1.55;
+}
+
+@media (max-width: 900px) {
+  .head {
+    grid-column: 1 / -1;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}

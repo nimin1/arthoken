@@ -1,0 +1,117 @@
+.form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: var(--col-gap);
+  row-gap: var(--s6);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s3);
+}
+
+.wide {
+  grid-column: 1 / -1;
+}
+
+.control {
+  border: 0;
+  border-block-end: 1px solid var(--rule-control);
+  background: transparent;
+  padding-block: 0.65rem;
+  font-size: var(--t-body);
+  color: var(--fg);
+  border-radius: 0;
+  transition: border-color var(--t-mid) var(--e-std);
+}
+
+.control::placeholder {
+  color: var(--fg-3);
+  opacity: 0.7;
+}
+
+.control:hover {
+  border-color: var(--fg-3);
+}
+
+.control:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.control:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+textarea.control {
+  resize: vertical;
+  min-block-size: 7rem;
+  line-height: 1.55;
+}
+
+.control[aria-invalid="true"] {
+  border-color: #e0654a;
+}
+
+.error {
+  color: #ff9a80;
+  font-size: 0.8125rem;
+}
+
+.actions {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s5);
+  padding-block-start: var(--s2);
+}
+
+.submit {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: #f3f7f7;
+  color: #06110f;
+  padding: 0.95rem 1.4rem;
+  border-radius: var(--r-control);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.6) inset,
+    0 10px 30px -14px rgba(45, 216, 224, 0.5);
+  transition: background-color var(--t-mid) var(--e-std), box-shadow var(--t-mid) var(--e-std);
+}
+
+.submit:hover {
+  background: #ffffff;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.7) inset,
+    0 14px 40px -14px rgba(45, 216, 224, 0.75);
+}
+
+.submit[disabled] {
+  opacity: 0.5;
+  cursor: progress;
+}
+
+.note {
+  color: var(--fg-3);
+  font-size: 0.8125rem;
+  max-inline-size: 40ch;
+}
+
+.status {
+  grid-column: 1 / -1;
+  border-block-start: 1px solid var(--rule);
+  padding-block-start: var(--s4);
+  color: var(--fg-2);
+}
+
+@media (max-width: 720px) {
+  .form {
+    grid-template-columns: 1fr;
+  }
+}

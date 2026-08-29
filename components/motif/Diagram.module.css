@@ -1,0 +1,282 @@
+.frame {
+  position: relative;
+  border: 1px solid var(--line);
+  border-radius: var(--r-panel);
+  background-image: var(--sheen);
+  background-color: var(--bg-panel);
+  box-shadow: var(--shadow-panel);
+  overflow: hidden;
+}
+
+.frameHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s4);
+  padding: 0.85rem 1.1rem;
+  border-block-end: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.018);
+}
+
+.dots {
+  display: inline-flex;
+  gap: 0.35rem;
+}
+
+.dots span {
+  inline-size: 7px;
+  block-size: 7px;
+  border-radius: 50%;
+  background: var(--line-3);
+}
+
+.dots span:first-child {
+  background: var(--accent);
+}
+
+.scroller {
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  padding: clamp(1rem, 2.2vw, 1.75rem);
+}
+
+.svg {
+  display: block;
+  inline-size: 100%;
+  min-inline-size: 840px;
+  block-size: auto;
+}
+
+.hint {
+  display: none;
+  padding: 0 1.1rem 0.85rem;
+}
+
+@media (max-width: 860px) {
+  .hint {
+    display: block;
+  }
+}
+
+/* ---- shared diagram parts ---- */
+.box {
+  fill: rgba(12, 21, 25, 0.92);
+  stroke: var(--line-2);
+  stroke-width: 1;
+}
+
+.boxAccent {
+  fill: rgba(45, 216, 224, 0.07);
+  stroke: rgba(45, 216, 224, 0.45);
+  stroke-width: 1;
+}
+
+.boxGhost {
+  fill: rgba(255, 255, 255, 0.02);
+  stroke: var(--line);
+  stroke-width: 1;
+  stroke-dasharray: 4 4;
+}
+
+.boxTitle {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.012em;
+  fill: var(--fg);
+}
+
+.boxCaption {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  fill: var(--fg-3);
+  text-transform: uppercase;
+}
+
+.boxCaptionAccent {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  fill: var(--accent);
+  text-transform: uppercase;
+}
+
+.wire {
+  fill: none;
+  stroke: var(--line-3);
+  stroke-width: 1;
+}
+
+.wireSoft {
+  fill: none;
+  stroke: var(--line);
+  stroke-width: 1;
+  stroke-dasharray: 3 5;
+}
+
+.wireAccent {
+  fill: none;
+  stroke: rgba(45, 216, 224, 0.5);
+  stroke-width: 1.25;
+}
+
+.head {
+  fill: var(--line-3);
+}
+
+.flow {
+  fill: none;
+  stroke: var(--accent-lit);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+}
+
+.railLabel {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  fill: var(--fg-2);
+  text-transform: uppercase;
+}
+
+.zoneLabel {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  fill: var(--fg-3);
+  text-transform: uppercase;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .flow {
+    stroke-dasharray: 0.045 0.955;
+    animation: dgTravel 6000ms linear infinite;
+  }
+
+  @keyframes dgTravel {
+    from {
+      stroke-dashoffset: 1;
+    }
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flow {
+    display: none;
+  }
+}
+
+/* ---- engagement + pipeline additions ---- */
+.zone {
+  fill: rgba(255, 255, 255, 0.016);
+  stroke: var(--line);
+  stroke-width: 1;
+  stroke-dasharray: 3 5;
+}
+
+.payLine {
+  stroke: var(--accent);
+  stroke-width: 1.5;
+  stroke-dasharray: 5 5;
+  opacity: 0.85;
+}
+
+.payLabel {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.13em;
+  fill: var(--accent);
+  text-transform: uppercase;
+}
+
+.loopLabel {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  fill: var(--fg-3);
+  text-transform: uppercase;
+}
+
+.scaleLabel {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  fill: var(--fg-3);
+  text-transform: uppercase;
+}
+
+.laneLabel {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  fill: var(--fg-2);
+  text-transform: uppercase;
+}
+
+.stageLabel {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  fill: var(--fg-3);
+  text-transform: uppercase;
+}
+
+.laneBandAi {
+  fill: rgba(255, 255, 255, 0.02);
+  stroke: var(--line);
+  stroke-width: 1;
+  stroke-dasharray: 3 5;
+}
+
+.laneBandHuman {
+  fill: rgba(45, 216, 224, 0.045);
+  stroke: rgba(45, 216, 224, 0.24);
+  stroke-width: 1;
+}
+
+.boxLine {
+  font-family: var(--font-sans);
+  font-size: 12.5px;
+  font-weight: 500;
+  letter-spacing: -0.006em;
+  fill: var(--fg-2);
+}
+
+.boxLineStrong {
+  font-family: var(--font-sans);
+  font-size: 12.5px;
+  font-weight: 500;
+  letter-spacing: -0.006em;
+  fill: var(--fg);
+}
+
+.gate {
+  fill: var(--bg);
+  stroke: var(--accent);
+  stroke-width: 1.2;
+}
+
+.chip {
+  fill: rgba(255, 255, 255, 0.028);
+  stroke: var(--line-2);
+  stroke-width: 1;
+}
+
+.chipLabel {
+  font-family: var(--font-sans);
+  font-size: 12.5px;
+  font-weight: 500;
+  fill: var(--fg);
+}
+
+.frameTitle {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  fill: var(--fg-3);
+  text-transform: uppercase;
+}

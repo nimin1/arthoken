@@ -1,0 +1,101 @@
+.section {
+  background: var(--bg-raised);
+  border-block: 1px solid var(--line);
+}
+
+.head {
+  grid-column: 1 / span 7;
+}
+
+.action {
+  grid-column: 10 / span 3;
+  justify-self: end;
+  align-self: end;
+}
+
+.diagram {
+  grid-column: 1 / -1;
+  margin-block-start: clamp(2.5rem, 5vw, 4rem);
+}
+
+.steps {
+  grid-column: 1 / -1;
+  margin-block-start: clamp(2.5rem, 4.5vw, 3.5rem);
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: var(--col-gap);
+}
+
+.step {
+  border-block-start: 1px solid var(--line-2);
+  padding-block-start: var(--s5);
+}
+
+.when {
+  color: var(--accent);
+}
+
+.stepTitle {
+  margin-block-start: var(--s4);
+  font-size: 1.0625rem;
+  font-weight: 600;
+  letter-spacing: -0.014em;
+  line-height: 1.25;
+}
+
+.stepBody {
+  margin-block-start: var(--s3);
+  color: var(--fg-2);
+  font-size: 0.9375rem;
+  line-height: 1.55;
+}
+
+.boundary {
+  grid-column: 1 / -1;
+  margin-block-start: clamp(2.5rem, 4.5vw, 3.5rem);
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--col-gap);
+  padding: clamp(1.25rem, 2.2vw, 1.75rem);
+  border: 1px solid var(--line);
+  border-radius: var(--r-panel);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.boundaryLabel {
+  grid-column: 1 / span 2;
+}
+
+.boundaryText {
+  grid-column: 3 / span 9;
+  color: var(--fg-2);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+  .head,
+  .action,
+  .diagram,
+  .steps,
+  .boundary,
+  .boundaryLabel,
+  .boundaryText {
+    grid-column: 1 / -1;
+  }
+
+  .action {
+    justify-self: start;
+    margin-block-start: var(--s5);
+  }
+
+  .steps {
+    grid-template-columns: 1fr;
+    gap: var(--s6);
+  }
+
+  .boundary {
+    grid-template-columns: 1fr;
+    row-gap: var(--s3);
+  }
+}

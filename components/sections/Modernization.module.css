@@ -1,0 +1,47 @@
+.head {
+  grid-column: 1 / span 6;
+}
+
+.steps {
+  grid-column: 8 / span 5;
+  align-self: end;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--s5) var(--col-gap);
+}
+
+.step {
+  border-block-start: 1px solid var(--line-2);
+  padding-block-start: var(--s4);
+}
+
+.stepTitle {
+  margin-block-start: var(--s3);
+  font-size: 1.0625rem;
+  font-weight: 600;
+  letter-spacing: -0.014em;
+}
+
+.stepBody {
+  margin-block-start: var(--s2);
+  color: var(--fg-2);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.diagram {
+  grid-column: 1 / -1;
+  margin-block-start: clamp(2.5rem, 5vw, 4rem);
+}
+
+@media (max-width: 900px) {
+  .head,
+  .steps,
+  .diagram {
+    grid-column: 1 / -1;
+  }
+
+  .steps {
+    margin-block-start: var(--s7);
+  }
+}
