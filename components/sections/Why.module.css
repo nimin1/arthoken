@@ -29,8 +29,30 @@
 }
 
 .row {
+  position: relative;
   padding-block: clamp(0.8rem, 1.4vw, 1.15rem);
   border-block-end: 1px solid var(--line);
+  transition: background-color var(--t-mid) var(--e-std);
+}
+
+/* The wash bleeds past the shell so the row reads as a full band. */
+.row::before {
+  content: "";
+  position: absolute;
+  inset-block: 0;
+  inset-inline: calc(var(--gutter) * -0.5);
+  background: var(--wash);
+  opacity: 0;
+  transition: opacity var(--t-mid) var(--e-std);
+  pointer-events: none;
+}
+
+.row:hover::before {
+  opacity: 1;
+}
+
+.row > * {
+  position: relative;
 }
 
 /* The left column sits back. It is context, not the argument. */

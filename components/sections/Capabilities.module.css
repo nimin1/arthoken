@@ -113,3 +113,45 @@
     max-inline-size: none;
   }
 }
+
+/* ---------- Compact, homepage only ---------- */
+/* One line each. The detail lives on the Capabilities page. */
+.compact {
+  grid-column: 1 / -1;
+  border-block-start: 1px solid var(--line-2);
+}
+
+.compactRow {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--col-gap);
+  align-items: baseline;
+  padding-block: clamp(0.9rem, 1.5vw, 1.2rem);
+  border-block-end: 1px solid var(--line);
+}
+
+.compactTitle {
+  grid-column: 2 / span 3;
+  font-size: var(--t-h4);
+  font-weight: 500;
+  letter-spacing: -0.018em;
+}
+
+.compactLede {
+  grid-column: 5 / -1;
+  color: var(--fg-2);
+  font-size: var(--t-small);
+  line-height: 1.5;
+}
+
+@media (max-width: 760px) {
+  .compactRow {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 0.3rem;
+  }
+
+  .compactTitle,
+  .compactLede {
+    grid-column: 1 / -1;
+  }
+}

@@ -28,11 +28,12 @@ export function EngagementModule({ item, index }: { item: Engagement; index: num
       </div>
 
       <div className={styles.body}>
-        <h3 className={styles.title} data-reveal="mask">
+        <h2 className={styles.title} data-reveal="mask">
           <span className="mask-inner">{item.title}</span>
-        </h3>
+        </h2>
+      </div>
 
-        <dl className={styles.spec}>
+      <dl className={styles.spec}>
           {rows.map((row) => (
             <div
               key={row.label}
@@ -42,8 +43,7 @@ export function EngagementModule({ item, index }: { item: Engagement; index: num
               <dd className={styles.rowText}>{row.text}</dd>
             </div>
           ))}
-        </dl>
-      </div>
+      </dl>
     </article>
   );
 }

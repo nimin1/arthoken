@@ -63,7 +63,17 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${grotesk.variable} ${plexMono.variable}`}>
+    /**
+     * `data-scroll-behavior="smooth"` tells Next that the smooth scroll
+     * declared in globals.css is deliberate, so it suppresses it during
+     * route changes. Without it a navigation animates the scroll to the
+     * top instead of jumping, which reads as a stutter.
+     */
+    <html
+      lang="en"
+      data-scroll-behavior="smooth"
+      className={`${grotesk.variable} ${plexMono.variable}`}
+    >
       <body>
         <a className="skip-link" href="#main">
           Skip to content

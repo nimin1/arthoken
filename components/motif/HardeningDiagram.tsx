@@ -41,7 +41,7 @@ export default function HardeningDiagram() {
             </g>
           ))}
 
-          <path className={styles.wire} d="M376 222H414" />
+          <path pathLength={1} className={styles.wire} d="M376 222H414" />
           <path className={styles.head} d="M412 218L420 222L412 226Z" />
 
           {/* what we hand over */}
@@ -59,7 +59,7 @@ export default function HardeningDiagram() {
             </g>
           ))}
 
-          <path className={styles.wireSoft} d="M712 116V344" />
+          <path pathLength={1} className={styles.wireSoft} d="M712 116V344" />
 
           {hardening.production.map((item, i) => {
             const col = i % 2;

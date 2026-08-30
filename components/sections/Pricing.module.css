@@ -170,3 +170,91 @@
     gap: var(--s6);
   }
 }
+
+
+/* =============================================================
+   The schedule draws itself.
+   Each bar grows from its left edge as the band enters view,
+   staggered across the four phases so the eye reads them in
+   order, and the figures rise in behind their own bar.
+   ============================================================= */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .slice::before {
+      transform: scaleX(0);
+      transform-origin: 0 50%;
+      animation: barGrow linear both;
+      animation-timeline: view();
+    }
+
+    .slice:nth-child(1)::before {
+      animation-range: entry 8% entry 62%;
+    }
+    .slice:nth-child(2)::before {
+      animation-range: entry 14% entry 70%;
+    }
+    .slice:nth-child(3)::before {
+      animation-range: entry 20% entry 78%;
+    }
+    .slice:nth-child(4)::before {
+      animation-range: entry 26% entry 86%;
+    }
+
+    @keyframes barGrow {
+      to {
+        transform: none;
+      }
+    }
+
+    .amount,
+    .when,
+    .sliceBody {
+      opacity: 0;
+      animation: sliceIn linear both;
+      animation-timeline: view();
+    }
+
+    .slice:nth-child(1) .amount,
+    .slice:nth-child(1) .when,
+    .slice:nth-child(1) .sliceBody {
+      animation-range: entry 20% entry 78%;
+    }
+    .slice:nth-child(2) .amount,
+    .slice:nth-child(2) .when,
+    .slice:nth-child(2) .sliceBody {
+      animation-range: entry 26% entry 86%;
+    }
+    .slice:nth-child(3) .amount,
+    .slice:nth-child(3) .when,
+    .slice:nth-child(3) .sliceBody {
+      animation-range: entry 32% entry 92%;
+    }
+    .slice:nth-child(4) .amount,
+    .slice:nth-child(4) .when,
+    .slice:nth-child(4) .sliceBody {
+      animation-range: entry 38% entry 98%;
+    }
+
+    @keyframes sliceIn {
+      from {
+        opacity: 0;
+        transform: translate3d(0, 12px, 0);
+      }
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slice::before,
+  .amount,
+  .when,
+  .sliceBody {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

@@ -78,9 +78,20 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
+  /* The stack assembles rather than fades. Each plane arrives from
+     below with a little overshoot and settles, lowest first. */
   .layer {
     opacity: 0;
-    animation: rise 1100ms var(--e-out) forwards;
+    transform-box: fill-box;
+    transform-origin: 50% 50%;
+    animation: rise 1150ms var(--e-spring) forwards;
+  }
+
+  /* The surface detail lands after the plane it sits on. */
+  .mesh,
+  .nodes {
+    opacity: 0;
+    animation: fadeIn 760ms var(--e-out) forwards;
   }
 
   .pulse {
@@ -90,13 +101,27 @@
 
   .tags {
     opacity: 0;
-    animation: fadeIn 900ms var(--e-out) 1500ms forwards;
+    animation: fadeIn 900ms var(--e-out) 1620ms forwards;
+  }
+
+  /* The leader lines draw out to their labels. */
+  .leader {
+    transform-box: fill-box;
+    transform-origin: 0 50%;
+    transform: scaleX(0);
+    animation: drawLeader 620ms var(--e-out) 1700ms forwards;
+  }
+
+  @keyframes drawLeader {
+    to {
+      transform: none;
+    }
   }
 
   @keyframes rise {
     from {
       opacity: 0;
-      transform: translateY(26px);
+      transform: translateY(58px) scale(0.965);
     }
     to {
       opacity: 1;

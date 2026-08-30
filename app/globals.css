@@ -95,10 +95,10 @@
   --font-sans: var(--font-grotesk), "Helvetica Neue", Helvetica, Arial, sans-serif;
   --font-mono: var(--font-plex-mono), ui-monospace, "SFMono-Regular", Menlo, monospace;
 
-  --t-display-0: clamp(2.875rem, 1.75rem + 4.7vw, 5.75rem);
-  --t-display-1: clamp(2.75rem, 1.95rem + 3.35vw, 4.75rem);
-  --t-display-2: clamp(2.125rem, 1.6rem + 2.2vw, 3.75rem);
-  --t-display-3: clamp(1.625rem, 1.35rem + 1.15vw, 2.5rem);
+  --t-display-0: clamp(2.5rem, 1.6rem + 3.6vw, 4.5rem);
+  --t-display-1: clamp(2.25rem, 1.7rem + 2.4vw, 3.5rem);
+  --t-display-2: clamp(1.75rem, 1.45rem + 1.3vw, 2.625rem);
+  --t-display-3: clamp(1.375rem, 1.25rem + 0.5vw, 1.75rem);
   --t-h4: clamp(1.1875rem, 1.11rem + 0.33vw, 1.4375rem);
   --t-lede: clamp(1.0625rem, 1rem + 0.26vw, 1.25rem);
   --t-body: clamp(1rem, 0.96rem + 0.12vw, 1.0625rem);
@@ -140,6 +140,8 @@
 
   /* --- Motion --- */
   --e-out: cubic-bezier(0.16, 1, 0.3, 1);
+  /* A slight overshoot. Used where something arrives and settles. */
+  --e-spring: cubic-bezier(0.34, 1.42, 0.44, 1);
   --e-std: cubic-bezier(0.4, 0, 0.2, 1);
   --e-inout: cubic-bezier(0.76, 0, 0.24, 1);
   --t-fast: 160ms;
@@ -725,4 +727,123 @@ strong {
   gap: var(--s6) var(--col-gap);
   border-block-start: 1px solid var(--line);
   padding-block-start: var(--s5);
+}
+
+
+/* =============================================================
+   Scroll-driven motion.
+   Everything below runs on the compositor via animation-timeline,
+   so there is no scroll listener and no work on the main thread.
+   Browsers without support simply render the finished state, and
+   the reduced-motion block at the end switches all of it off.
+   ============================================================= */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    /* --- A block that rises as it enters --- */
+    [data-rise] {
+      animation: rise-in linear both;
+      animation-timeline: view();
+      animation-range: entry 5% entry 85%;
+    }
+
+    @keyframes rise-in {
+      from {
+        opacity: 0;
+        transform: translate3d(0, 26px, 0);
+      }
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    /* --- A rule that draws itself --- */
+    [data-draw] {
+      transform: scaleX(0);
+      transform-origin: 0 50%;
+      animation: draw-x linear both;
+      animation-timeline: view();
+      animation-range: entry 5% entry 85%;
+    }
+
+    @keyframes draw-x {
+      to {
+        transform: none;
+      }
+    }
+
+    /* --- A bar that grows from nothing --- */
+    [data-grow] {
+      animation: grow-x var(--t-xslow) var(--e-out) both;
+      animation-timeline: view();
+      animation-range: entry 15% entry 88%;
+      transform-origin: 0 50%;
+    }
+
+    @keyframes grow-x {
+      from {
+        transform: scaleX(0);
+      }
+      to {
+        transform: none;
+      }
+    }
+  }
+}
+
+/* One switch for every scroll-driven animation added above. */
+@media (prefers-reduced-motion: reduce) {
+  [data-rise],
+  [data-draw],
+  [data-grow] {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+
+/* =============================================================
+   Navigation.
+   The incoming page settles into place instead of snapping. Short
+   and shallow on purpose: a business reader clicking through to a
+   second page should feel continuity, not wait for a performance.
+   ============================================================= */
+.route-enter {
+  transform-origin: 50% 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .route-enter {
+    animation: route-in 460ms var(--e-out) both;
+  }
+
+  @keyframes route-in {
+    from {
+      opacity: 0;
+      transform: translate3d(0, 10px, 0);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
+/* Cross-document navigations, where the browser can do the work
+   itself. Ignored by browsers that route this app client-side. */
+@view-transition {
+  navigation: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .route-enter {
+    animation: none !important;
+  }
+
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
 }

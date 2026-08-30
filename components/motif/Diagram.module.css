@@ -310,3 +310,100 @@
 .paper .hint {
   padding-inline: 0;
 }
+
+
+/* =============================================================
+   Entry choreography.
+   The wires draw along their own paths, then the boxes and their
+   labels arrive behind them. Scroll-driven, so it plays exactly
+   when the figure comes into view and nothing runs before that.
+   ============================================================= */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    /* Solid wires draw along their own path. */
+    .wire,
+    .wireAccent {
+      stroke-dasharray: 1;
+      stroke-dashoffset: 1;
+      animation: dgDraw linear both;
+      animation-timeline: view();
+      animation-range: entry 8% entry 80%;
+    }
+
+    /* The soft wires are dashed by design, so they fade rather than
+       draw. Overriding their dasharray would flatten them to solid. */
+    .wireSoft {
+      opacity: 0;
+      animation: dgFade linear both;
+      animation-timeline: view();
+      animation-range: entry 10% entry 82%;
+    }
+
+    @keyframes dgDraw {
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    .box,
+    .boxAccent,
+    .boxGhost,
+    .zone {
+      opacity: 0;
+      animation: dgFade linear both;
+      animation-timeline: view();
+      animation-range: entry 5% entry 70%;
+    }
+
+    .boxTitle,
+    .boxCaption,
+    .boxCaptionAccent,
+    .laneLabel,
+    .railLabel,
+    .zoneLabel,
+    .payLabel,
+    .loopLabel {
+      opacity: 0;
+      animation: dgFade linear both;
+      animation-timeline: view();
+      animation-range: entry 15% entry 88%;
+    }
+
+    .head {
+      opacity: 0;
+      animation: dgFade linear both;
+      animation-timeline: view();
+      animation-range: entry 22% entry 95%;
+    }
+
+    @keyframes dgFade {
+      to {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wire,
+  .wireSoft,
+  .wireAccent,
+  .box,
+  .boxAccent,
+  .boxGhost,
+  .zone,
+  .boxTitle,
+  .boxCaption,
+  .boxCaptionAccent,
+  .laneLabel,
+  .railLabel,
+  .zoneLabel,
+  .payLabel,
+  .loopLabel,
+  .head {
+    animation: none !important;
+    opacity: 1 !important;
+    stroke-dashoffset: 0 !important;
+    stroke-dasharray: none !important;
+  }
+}

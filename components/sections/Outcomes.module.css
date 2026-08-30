@@ -54,6 +54,11 @@
   row-gap: 0.15rem;
   padding-block: 0.7rem;
   border-block-end: 1px solid var(--line);
+  transition: border-color var(--t-mid) var(--e-std);
+}
+
+.recordRow:hover {
+  border-color: var(--line-3);
 }
 
 .recordRow:first-child {

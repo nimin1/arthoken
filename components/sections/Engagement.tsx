@@ -18,13 +18,15 @@ export default function Engagement() {
           lede={engagement.lede}
         />
 
-        <div className={styles.instrument} data-reveal="fade">
+        <div className={styles.instrument} data-rise>
           <EngagementWalkthrough />
         </div>
 
         <div className={styles.boundary}>
           <p className={`label ${styles.boundaryLabel}`}>The small print</p>
-          <p className={styles.boundaryText}>{engagement.boundary}</p>
+          <p className={styles.boundaryText}>
+            {engagement.boundary} <strong>{engagement.founding}</strong>
+          </p>
         </div>
       </div>
     </section>

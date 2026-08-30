@@ -23,10 +23,8 @@ export default function InsightsPage() {
                   <span className="label">{item.category}</span>
                   <span className="label label--accent">{item.status}</span>
                 </div>
-                <div>
-                  <h2 className={styles.title}>{item.title}</h2>
-                  <p className={styles.dek}>{item.dek}</p>
-                </div>
+                <h2 className={styles.title}>{item.title}</h2>
+                <p className={styles.dek}>{item.dek}</p>
               </li>
             ))}
           </ul>

@@ -111,7 +111,7 @@ export default function LayerStack({ className }: { className?: string }) {
                 style={{ animationDelay: `${140 + i * 130}ms` }}
               >
                 <polygon className={styles.plane} points={planePath(level)} />
-                <g className={styles.mesh}>
+                <g className={styles.mesh} style={{ animationDelay: `${420 + i * 130}ms` }}>
                   {meshPaths(level).map((d) => (
                     <path key={d} d={d} />
                   ))}
@@ -120,16 +120,18 @@ export default function LayerStack({ className }: { className?: string }) {
                   className={styles.planeTop}
                   points={poly([p(-HALF, -HALF, level), p(HALF, -HALF, level), p(HALF, HALF, level)])}
                 />
-                {layer.nodes.map(([nx, ny], n) => {
-                  const [px, py] = p(nx, ny, level);
-                  return (
-                    <path
-                      key={`${layer.name}-${n}`}
-                      className={n === 0 ? styles.node : styles.nodeSoft}
-                      d={diamond(px, py, 5)}
-                    />
-                  );
-                })}
+                <g className={styles.nodes} style={{ animationDelay: `${520 + i * 130}ms` }}>
+                  {layer.nodes.map(([nx, ny], n) => {
+                    const [px, py] = p(nx, ny, level);
+                    return (
+                      <path
+                        key={`${layer.name}-${n}`}
+                        className={n === 0 ? styles.node : styles.nodeSoft}
+                        d={diamond(px, py, 5)}
+                      />
+                    );
+                  })}
+                </g>
               </g>
 
               {linkPath ? (

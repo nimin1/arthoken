@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import PageHeader from "@/components/site/PageHeader";
 import ContactForm from "@/components/site/ContactForm";
 import TextLink from "@/components/ui/TextLink";
-import { site } from "@/lib/content";
+import { pricing, site } from "@/lib/content";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
@@ -48,6 +48,28 @@ export default function ContactPage() {
               </p>
             </div>
           </aside>
+        </div>
+      </section>
+
+      {/* The terms someone is about to agree to belong next to the form
+          they are about to send, not halfway down the homepage. */}
+      <section className="section section--sunk" aria-labelledby="terms-title">
+        <div className="shell grid12">
+          <div className="head-quiet">
+            <h2 id="terms-title" className={`label ${styles.termsKicker}`}>
+              How we work together
+            </h2>
+            <p className={styles.termsAside}>{pricing.footnote}</p>
+          </div>
+
+          <ul className={styles.terms}>
+            {pricing.terms.map((term) => (
+              <li key={term.title} className={styles.term} data-reveal="fade">
+                <h3 className={styles.termTitle}>{term.title}</h3>
+                <p className={styles.termBody}>{term.body}</p>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
     </>

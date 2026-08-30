@@ -18,7 +18,7 @@ export default function Why() {
           lede={why.lede}
         />
 
-        <div className={styles.table}>
+        <div className={styles.table} data-rise>
           <div className={styles.headRow} aria-hidden="true">
             <span className={`label ${styles.usualHead}`}>{why.usualHead}</span>
             <span className={`label label--accent ${styles.oursHead}`}>{why.oursHead}</span>

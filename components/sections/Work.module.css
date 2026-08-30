@@ -26,15 +26,16 @@
   overflow: hidden;
 }
 
+/* Anchored to the card corner. Inset from the edge it read as a stray
+   mark floating above the label. */
 .module::before {
   content: "";
   position: absolute;
   inset-block-start: 0;
-  inset-inline-start: clamp(1.75rem, 3vw, 3rem);
-  inline-size: 7rem;
-  block-size: 1px;
+  inset-inline-start: 0;
+  inline-size: 4.5rem;
+  block-size: 2px;
   background: var(--accent);
-  opacity: 0.7;
 }
 
 .meta {
@@ -67,7 +68,7 @@
 }
 
 .body {
-  grid-column: 4 / span 9;
+  grid-column: 4 / -1;
 }
 
 .title {
@@ -79,16 +80,25 @@
 }
 
 .spec {
+  grid-column: 1 / -1;
   margin-block-start: clamp(1.75rem, 3vw, 2.5rem);
   border-block-start: 1px solid var(--line);
 }
 
 .row {
   display: grid;
-  grid-template-columns: 10.5rem minmax(0, 1fr);
+  grid-template-columns: repeat(12, minmax(0, 1fr));
   column-gap: var(--col-gap);
   padding-block: var(--s5);
   border-block-end: 1px solid var(--line);
+}
+
+.rowLabel {
+  grid-column: 1 / span 3;
+}
+
+.rowText {
+  grid-column: 4 / -1;
 }
 
 .row:last-child {
@@ -141,12 +151,18 @@
   }
 
   .meta,
-  .body {
+  .body,
+  .spec {
     grid-column: 1 / -1;
   }
 
   .row {
     grid-template-columns: 1fr;
     row-gap: var(--s3);
+  }
+
+  .rowLabel,
+  .rowText {
+    grid-column: 1 / -1;
   }
 }

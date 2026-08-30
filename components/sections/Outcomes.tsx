@@ -18,7 +18,7 @@ export default function Outcomes() {
           lede={outcomes.lede}
         />
 
-        <div className={styles.measures}>
+        <div className={styles.measures} data-rise>
           <p className={`label ${styles.blockLabel}`}>{outcomes.measuresLabel}</p>
           <dl className={styles.grid}>
             {outcomes.measures.map((m, i) => (
@@ -35,7 +35,7 @@ export default function Outcomes() {
           </dl>
         </div>
 
-        <div className={styles.record}>
+        <div className={styles.record} data-rise>
           <p className={`label ${styles.blockLabel}`}>{outcomes.recordLabel}</p>
           <ol className={styles.recordList}>
             {outcomes.record.map((r) => (

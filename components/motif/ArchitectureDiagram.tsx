@@ -65,7 +65,7 @@ export default function ArchitectureDiagram() {
             [860, 900],
           ].map(([a, b]) => (
             <g key={a}>
-              <path className={styles.wire} d={arrow(a, b, midY)} />
+              <path pathLength={1} className={styles.wire} d={arrow(a, b, midY)} />
               <path className={styles.head} d={`M${b - 8} ${midY - 4}L${b} ${midY}L${b - 8} ${midY + 4}Z`} />
             </g>
           ))}
@@ -78,18 +78,18 @@ export default function ArchitectureDiagram() {
           />
 
           {/* orchestration down to retrieval and model */}
-          <path className={styles.wireAccent} d={`M470 ${ROW1 + H}V${ROW2 - 26}H447V${ROW2}`} />
-          <path className={styles.wireAccent} d={`M560 ${ROW1 + H}V${ROW2 - 26}H613V${ROW2}`} />
+          <path pathLength={1} className={styles.wireAccent} d={`M470 ${ROW1 + H}V${ROW2 - 26}H447V${ROW2}`} />
+          <path pathLength={1} className={styles.wireAccent} d={`M560 ${ROW1 + H}V${ROW2 - 26}H613V${ROW2}`} />
           <path className={styles.head} d={`M443 ${ROW2 - 8}L447 ${ROW2}L451 ${ROW2 - 8}Z`} />
           <path className={styles.head} d={`M609 ${ROW2 - 8}L613 ${ROW2}L617 ${ROW2 - 8}Z`} />
 
           {/* decision down to human approval */}
-          <path className={styles.wireAccent} d={`M755 ${ROW1 + H}V${ROW2 + 96}`} />
+          <path pathLength={1} className={styles.wireAccent} d={`M755 ${ROW1 + H}V${ROW2 + 96}`} />
           <path className={styles.head} d={`M751 ${ROW2 + 88}L755 ${ROW2 + 96}L759 ${ROW2 + 88}Z`} />
 
           {/* rail, and its faint reach into every stage */}
           {[250, 1040].map((x) => (
-            <path key={x} className={styles.wireSoft} d={`M${x} ${ROW1 + H}V356`} />
+            <path pathLength={1} key={x} className={styles.wireSoft} d={`M${x} ${ROW1 + H}V356`} />
           ))}
 
           <rect x={20} y={356} width={1160} height={72} rx={10} className={styles.boxGhost} />

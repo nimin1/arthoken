@@ -5,12 +5,11 @@ import { site } from "@/lib/content";
 import styles from "./ContactForm.module.css";
 
 type Errors = Partial<Record<"name" | "email" | "problem", string>>;
-
-const ENDPOINT = process.env.NEXT_PUBLIC_CONTACT_ENDPOINT;
+type State = "idle" | "sending" | "sent" | "failed";
 
 export default function ContactForm() {
   const [errors, setErrors] = useState<Errors>({});
-  const [state, setState] = useState<"idle" | "sending" | "sent" | "failed">("idle");
+  const [state, setState] = useState<State>("idle");
 
   async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -20,6 +19,7 @@ export default function ContactForm() {
       organization: String(data.get("organization") ?? "").trim(),
       email: String(data.get("email") ?? "").trim(),
       problem: String(data.get("problem") ?? "").trim(),
+      company_url: String(data.get("company_url") ?? ""),
     };
 
     const next: Errors = {};
@@ -36,24 +36,20 @@ export default function ContactForm() {
       return;
     }
 
-    if (!ENDPOINT) {
-      const subject = encodeURIComponent(`Enquiry from ${values.organization || values.name}`);
-      const body = encodeURIComponent(
-        `Name: ${values.name}\nOrganization: ${values.organization || "not given"}\nEmail: ${values.email}\n\n${values.problem}\n`
-      );
-      window.location.href = `mailto:${site.email}?subject=${subject}&body=${body}`;
-      setState("sent");
-      return;
-    }
-
+    /**
+     * The form is only ever told it succeeded when the server says the
+     * message actually went. Anything else lands in `failed`, which
+     * shows the address so the enquiry is not lost.
+     */
+    setState("sending");
     try {
-      setState("sending");
-      const response = await fetch(ENDPOINT, {
+      const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify(values),
       });
-      setState(response.ok ? "sent" : "failed");
+      const payload = await response.json().catch(() => ({ ok: false }));
+      setState(response.ok && payload.ok ? "sent" : "failed");
     } catch {
       setState("failed");
     }
@@ -132,6 +128,12 @@ export default function ContactForm() {
         ) : null}
       </div>
 
+      {/* Not shown, not focusable, not announced. Bots fill it in. */}
+      <div className={styles.trap} aria-hidden="true">
+        <label htmlFor="company_url">Company URL</label>
+        <input id="company_url" name="company_url" tabIndex={-1} autoComplete="off" />
+      </div>
+
       <div className={styles.actions}>
         <button type="submit" className={styles.submit} disabled={state === "sending"}>
           {state === "sending" ? "Sending" : "Send"}
@@ -144,12 +146,25 @@ export default function ContactForm() {
         </p>
       </div>
 
-      <p className={styles.status} role="status">
-        {state === "sent"
-          ? "Thank you. Your message is on its way and we will come back to you shortly."
-          : state === "failed"
-            ? `Something went wrong sending that. Please write to ${site.email} instead.`
-            : ""}
+      <p
+        className={styles.status}
+        data-state={state}
+        role="status"
+        aria-live="polite"
+      >
+        {state === "sent" ? (
+          "Thank you. That has reached us, and a senior engineer will come back to you within two working days."
+        ) : state === "failed" ? (
+          <>
+            We could not send that from here. Please write to{" "}
+            <a className={styles.statusLink} href={`mailto:${site.email}`}>
+              {site.email}
+            </a>{" "}
+            and we will pick it up from there.
+          </>
+        ) : (
+          ""
+        )}
       </p>
     </form>
   );

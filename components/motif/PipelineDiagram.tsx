@@ -61,7 +61,7 @@ export default function PipelineDiagram() {
                   </text>
                 ))}
 
-                <path className={styles.wireAccent} d={`M${cx} ${AI_Y + BOX_H}V${HU_Y}`} />
+                <path pathLength={1} className={styles.wireAccent} d={`M${cx} ${AI_Y + BOX_H}V${HU_Y}`} />
                 <path
                   className={styles.gate}
                   d={`M${cx} ${AI_Y + BOX_H + 20}L${cx + 9} ${AI_Y + BOX_H + 30}L${cx} ${AI_Y + BOX_H + 40}L${cx - 9} ${AI_Y + BOX_H + 30}Z`}
@@ -76,7 +76,7 @@ export default function PipelineDiagram() {
                 ))}
 
                 {i < craft.columns.length - 1 ? (
-                  <path
+                  <path pathLength={1}
                     className={styles.wireSoft}
                     d={`M${x + COL_W} ${HU_Y + BOX_H / 2}H${x + COL_W + GAP}`}
                   />
@@ -85,7 +85,7 @@ export default function PipelineDiagram() {
             );
           })}
 
-          <path className={styles.wireSoft} d={`M${X0 - 12} 392H1180`} />
+          <path pathLength={1} className={styles.wireSoft} d={`M${X0 - 12} 392H1180`} />
           <text className={styles.scaleLabel} x={X0 - 12} y={412}>
             nothing crosses the gate on its own
           </text>

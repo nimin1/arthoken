@@ -164,7 +164,7 @@ Insights are marked *Forthcoming* until something is actually published.
 
 ## Before launch
 
-- Replace `hello@arthoken.com` and `https://arthoken.com` in `lib/content.ts`.
+- Replace `info@arthoken.com` and `https://arthoken.com` in `lib/content.ts`.
 - Wire the contact endpoint (above).
 - Add real engagements as they become referenceable, and remove the disclosure
   line for any that are.

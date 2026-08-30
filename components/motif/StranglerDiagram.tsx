@@ -45,7 +45,7 @@ export default function StranglerDiagram() {
           <text className={styles.boxCaption} x={36} y={230}>
             all of it
           </text>
-          <path className={styles.wire} d="M140 213H184" />
+          <path pathLength={1} className={styles.wire} d="M140 213H184" />
           <path className={styles.head} d="M182 209L190 213L182 217Z" />
 
           {/* façade */}
@@ -58,9 +58,9 @@ export default function StranglerDiagram() {
           </text>
 
           {/* façade out, up and down */}
-          <path className={styles.wireAccent} d="M346 186H384V128H414" />
+          <path pathLength={1} className={styles.wireAccent} d="M346 186H384V128H414" />
           <path className={styles.head} d="M412 124L420 128L412 132Z" />
-          <path className={styles.wire} d="M346 240H384V310H414" />
+          <path pathLength={1} className={styles.wire} d="M346 240H384V310H414" />
           <path className={styles.head} d="M412 306L420 310L412 314Z" />
 
           <path className={styles.flow} pathLength={1} d="M150 213H196M346 186H384V128H420" />
@@ -103,8 +103,8 @@ export default function StranglerDiagram() {
           </text>
 
           {/* compare */}
-          <path className={styles.wire} d="M730 128H778V196H806" />
-          <path className={styles.wire} d="M730 316H778V232H806" />
+          <path pathLength={1} className={styles.wire} d="M730 128H778V196H806" />
+          <path pathLength={1} className={styles.wire} d="M730 316H778V232H806" />
           <path className={styles.head} d="M804 192L812 196L804 200Z" />
           <path className={styles.head} d="M804 228L812 232L804 236Z" />
 
@@ -131,7 +131,7 @@ export default function StranglerDiagram() {
           <text className={styles.boxCaption} x={1104} y={280}>
             legacy
           </text>
-          <path className={styles.wireAccent} d="M1096 197H1160" />
+          <path pathLength={1} className={styles.wireAccent} d="M1096 197H1160" />
         </svg>
       </div>
 

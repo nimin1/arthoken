@@ -10,7 +10,7 @@
 
 .boundary {
   grid-column: 1 / -1;
-  margin-block-start: clamp(2rem, 4vw, 3.25rem);
+  margin-block-start: clamp(1.75rem, 3vw, 2.5rem);
   display: grid;
   grid-template-columns: minmax(9rem, 1fr) minmax(0, 4fr);
   gap: var(--s5) clamp(1.5rem, 3vw, 3rem);

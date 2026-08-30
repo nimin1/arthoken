@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import PageHeader from "@/components/site/PageHeader";
 import { EngagementModule } from "@/components/sections/Work";
+import Outcomes from "@/components/sections/Outcomes";
 import ContactCta from "@/components/sections/ContactCta";
 import { work } from "@/lib/content";
 
@@ -31,6 +32,8 @@ export default function WorkPage() {
           </p>
         </div>
       </section>
+
+      <Outcomes />
 
       <ContactCta />
     </>

@@ -1,5 +1,6 @@
 .headline {
-  grid-column: 1 / span 8;
+  grid-column: 1 / span 6;
+  grid-row: 2;
   font-size: var(--t-display-2);
   line-height: 1.04;
   letter-spacing: -0.028em;
@@ -13,13 +14,17 @@
 }
 
 .body {
-  grid-column: 1 / span 5;
-  margin-block-start: clamp(2.5rem, 5vw, 4rem);
+  grid-column: 1 / span 6;
+  grid-row: 3;
+  margin-block-start: clamp(1.75rem, 3vw, 2.5rem);
 }
 
+/* Starts level with the headline rather than below the prose, so the
+   space opposite the headline is not left empty. */
 .commitments {
-  grid-column: 7 / span 6;
-  margin-block-start: clamp(2.5rem, 5vw, 4rem);
+  grid-column: 8 / -1;
+  grid-row: 2 / span 2;
+  align-self: start;
   border-block-start: 1px solid var(--rule-strong);
 }
 
@@ -48,6 +53,7 @@
   .body,
   .commitments {
     grid-column: 1 / -1;
+    grid-row: auto;
   }
 
   .commitments {

@@ -2,7 +2,7 @@ import SectionHead from "@/components/ui/SectionHead";
 import { pricing } from "@/lib/content";
 import styles from "./Pricing.module.css";
 
-export default function Pricing() {
+export default function Pricing({ terms = true }: { terms?: boolean }) {
   return (
     <section className="section" id="cost" aria-labelledby="pricing-title">
       <div className="shell grid12">
@@ -40,6 +40,7 @@ export default function Pricing() {
           ))}
         </ol>
 
+        {terms ? (
         <ul className={styles.terms}>
           {pricing.terms.map((term, i) => (
             <li
@@ -56,8 +57,9 @@ export default function Pricing() {
             </li>
           ))}
         </ul>
+        ) : null}
 
-        <p className={styles.footnote}>{pricing.footnote}</p>
+        {terms ? <p className={styles.footnote}>{pricing.footnote}</p> : null}
       </div>
     </section>
   );

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import PageHeader from "@/components/site/PageHeader";
+import Craft from "@/components/sections/Craft";
 import Hardening from "@/components/sections/Hardening";
 import Modernization from "@/components/sections/Modernization";
 import Architecture from "@/components/sections/Architecture";
@@ -49,6 +50,8 @@ export default function CapabilitiesPage() {
           ))}
         </div>
       </section>
+
+      <Craft />
 
       <Hardening />
 

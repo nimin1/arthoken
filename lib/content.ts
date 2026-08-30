@@ -25,7 +25,7 @@ export const site = {
     "Arthoken builds software for problems worth solving. Tell us the problem in the first meeting and you will be using something we built by the second.",
   /** The closing line in the footer rule. */
   footerNote: "Nothing invoiced until you’ve seen it work",
-  email: "hello@arthoken.com",
+  email: "info@arthoken.com",
   url: "https://arthoken.com",
 } as const;
 
@@ -109,12 +109,15 @@ export const capabilities: {
   label: string;
   headline: string;
   lede: string;
+  shortLede: string;
   closing: string;
   items: Capability[];
 } = {
   label: "What we build",
   headline: "There is no service catalogue.",
   lede: "These are shapes of work rather than a menu to choose from. The common thread is that something worth doing was harder than it should have been.",
+  /** Used by the compact homepage variant. */
+  shortLede: "Five shapes of work. The common thread is that something worth doing was harder than it should have been.",
   closing:
     "The work we want is the work that has already defeated an attempt or two. A system nobody will touch. An integration that never quite worked. A pilot that could not survive contact with real data. If what you need is not on this list, that is usually where the interesting work is.",
   items: [
@@ -312,7 +315,7 @@ export const why = {
   ],
   /** Deliberate, quiet, and true. Not a platform claim. */
   compounding:
-    "Every engagement leaves us with something we keep. Architecture patterns that held up, testing approaches that caught real problems, tooling that removed a week of setup. The next problem starts further along than the last one did, which is the quiet argument for staying small.",
+    "Every engagement leaves us with patterns that held up, tests that caught real problems and tooling that removed a week of setup. The next problem starts further along than the last one did.",
 } as const;
 
 export type Pain = {
@@ -390,7 +393,7 @@ export const pains: { label: string; headline: string; lede: string; items: Pain
 export const engagement = {
   label: "How this works",
   headline: "Two meetings, then your call.",
-  lede: "Step through it below. Everything left of the line costs you nothing, and you can walk away at step four owing us nothing at all.",
+  lede: "Step through it below. The interesting step is the third one, where you tell us what we got wrong and find out how fast that turns into a new version.",
   steps: [
     {
       n: "01",
@@ -424,7 +427,10 @@ export const engagement = {
     },
   ],
   boundary:
-    "Some fair boundaries, so nobody feels tricked. One problem at a time, a shape we agree before we start, and a couple of weeks of our attention. We aren’t giving away production systems. We’re giving away the first version, because it’s the only honest way for you to judge us on something real. What the production build costs is set out further down this page.",
+    "One problem at a time, a shape we agree before we start, and a couple of weeks of our attention. We are giving away the first version, not a production system, because it is the only honest way for you to judge us on something real.",
+  /** Folded in from the old offer band. */
+  founding:
+    "This is how we are starting out while we earn the first few references. It is not how Arthoken intends to work forever.",
   cta: { label: "Bring us a problem", href: "/contact" },
 } as const;
 
